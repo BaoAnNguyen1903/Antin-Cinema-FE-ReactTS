@@ -1,8 +1,6 @@
-import { Outlet } from "react-router-dom"
-import AppHeader from "./components/layout/app.header"
-import AppFooter from "./components/layout/app.footer"
-
-
+import { Outlet } from "react-router-dom";
+import AppHeader from "./components/layout/app.header";
+import AppFooter from "./components/layout/app.footer";
 
 const Layout = () => {
   return (
@@ -11,7 +9,7 @@ const Layout = () => {
       <Outlet />
       <AppFooter />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
