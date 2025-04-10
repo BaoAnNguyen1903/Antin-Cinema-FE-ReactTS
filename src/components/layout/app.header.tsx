@@ -1,9 +1,5 @@
 const AppHeader = () => {
-  return (
-    <div>
-      header
-    </div>
-  )
-}
+  return <div>header</div>;
+};
 
-export default AppHeader
+export default AppHeader;

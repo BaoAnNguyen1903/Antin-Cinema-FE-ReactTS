@@ -4,35 +4,31 @@ import UudaiCard from "./uuDaiCard";
 import { Link } from "react-router-dom";
 
 const UuDai = () => {
-    return (
-        <>
-            <Row>
-                <Col xs={12}>
-                    <div>
-                        <h3 className="text-center">
-                            Khuyến Mãi & Ưu Đãi
-                        </h3>
-                    </div>
-                </Col>
-            </Row>
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ maxWidth: "1200px", width: "100%", padding: "20px" }}>
+        <Row justify="center" style={{ marginBottom: 20 }}>
+          <Col>
+            <h1 className="text-center">Khuyến Mãi & Ưu Đãi</h1>
+          </Col>
+        </Row>
 
-            <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-                {UUDAI?.map(item => {
-                    return(
-                        <Col md={4} className="uudai-card" key={item.id}>
-                            <Link to='qua-mung-len-hang-uu-dai-thanh-vien-antin-2025'>
-                                <UudaiCard
-                                    imgPath={item.imgPath}
-                                    title={item.title}
-                                    duration={item.duration}
-                                />
-                            </Link>
-                        </Col>
-                    )
-                })}
-            </Row>
-        </>
-    )
-}
+        <Row gutter={[20, 20]} justify="center">
+          {UUDAI?.map((item) => (
+            <Col md={6} sm={12} xs={24} key={item.id} className="uudai-card">
+              <Link to="qua-mung-len-hang-uu-dai-thanh-vien-antin-2025">
+                <UudaiCard
+                  imgPath={item.imgPath}
+                  title={item.title}
+                  duration={item.duration}
+                />
+              </Link>
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </div>
+  );
+};
 
 export default UuDai;
