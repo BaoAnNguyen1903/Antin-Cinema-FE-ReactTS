@@ -10,6 +10,10 @@ import LoginPage from "pages/client/auth/login";
 import RegisterPage from "pages/client/auth/register";
 import LayoutAdmin from "components/layout/layout.admin";
 import ProtectedRoute from "components/auth";
+import DashBoardPage from "pages/admin/dashboard";
+import ManageUserPage from "pages/admin/manage.user";
+import ManageMoviePage from "pages/admin/manage.movie";
+import ManageBookingPage from "pages/admin/manage.booking";
 
 const router = createBrowserRouter([
   {
@@ -42,32 +46,23 @@ const router = createBrowserRouter([
         path: "book",
         element: (
           <ProtectedRoute>
-            <ManageBookPage />
+            <ManageMoviePage />
           </ProtectedRoute>
         )
       },
       {
-        path: "order",
+        path: "booking",
         element: (
           <ProtectedRoute>
-            <ManageOrderPage />
+            <ManageBookingPage />
           </ProtectedRoute>
         )
       },
-
       {
         path: "user",
         element: (
           <ProtectedRoute>
             <ManageUserPage />
-          </ProtectedRoute>
-        )
-      },
-      {
-        path: "/admin",
-        element: (
-          <ProtectedRoute>
-            <div>admin page</div>
           </ProtectedRoute>
         )
       }
