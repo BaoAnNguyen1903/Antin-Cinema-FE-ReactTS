@@ -35,22 +35,22 @@ const TableUser = () => {
   });
 
   const [openViewDetail, setOpenViewDetail] = useState<boolean>(false);
-  const [dataViewDetail, setDataViewDetail] = useState<IUserTable | null>(null);
+  const [dataViewDetail, setDataViewDetail] = useState<IUser | null>(null);
 
   const [openModalCreate, setOpenModalCreate] = useState<boolean>(false);
   const [openModalImport, setOpenModalImport] = useState<boolean>(false);
 
-  const [currentDataTable, setCurrentDataTable] = useState<IUserTable[]>([]); // tạo state để lưu data để export
+  const [currentDataTable, setCurrentDataTable] = useState<IUser[]>([]); // tạo state để lưu data để export
 
   const [openModalUpdate, setOpenModalUpdate] = useState<boolean>(false);
-  const [dataUpdate, setDataUpdate] = useState<IUserTable | null>(null);
+  const [dataUpdate, setDataUpdate] = useState<IUser | null>(null);
 
   const [isDeleteUser, setIsDeleteUser] = useState<boolean>(false);
   const { message, notification } = App.useApp();
 
-  const handleDeleteUser = async (_id: string) => {
+  const handleDeleteUser = async (uid: number) => {
     setIsDeleteUser(true);
-    const res = await deleteUserAPI(_id);
+    const res = await deleteUserAPI(uid);
     if (res && res.data) {
       message.success("Xóa user thành công");
       refreshTable();
@@ -63,7 +63,7 @@ const TableUser = () => {
     setIsDeleteUser(false);
   };
 
-  const columns: ProColumns<IUserTable>[] = [
+  const columns: ProColumns<IUser>[] = [
     {
       dataIndex: "index",
       valueType: "indexBorder",
@@ -82,7 +82,7 @@ const TableUser = () => {
             }}
             href="#"
           >
-            {entity._id}
+            {entity.uid}
           </a>
         );
       }
@@ -131,7 +131,7 @@ const TableUser = () => {
               placement="leftTop"
               title={"Xác nhận xóa user"}
               description={"Bạn có chắc chắn muốn xóa user này ?"}
-              onConfirm={() => handleDeleteUser(entity._id)}
+              onConfirm={() => handleDeleteUser(entity.uid)}
               okText="Xác nhận"
               cancelText="Hủy"
               okButtonProps={{ loading: isDeleteUser }}
@@ -155,7 +155,7 @@ const TableUser = () => {
 
   return (
     <>
-      <ProTable<IUserTable, TSearch>
+      <ProTable<IUser, TSearch>
         columns={columns}
         actionRef={actionRef}
         cardBordered

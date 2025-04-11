@@ -16,6 +16,7 @@ declare global {
       gender: string;
       phone: string;
       email: string;
+      username: string;
       avatar: string;
       points: number;
       status: number;
@@ -36,6 +37,7 @@ declare global {
     gender: string;
     phone: string;
     email: string;
+    username: string;
     avatar: string;
     points: number;
     status: number;
