@@ -25,7 +25,7 @@ declare global {
 
   interface IRegister {
     uid: string;
-    email: string;
+    username: string;
     fullName: string;
   }
 
@@ -44,5 +44,15 @@ declare global {
 
   interface IFetchAccount {
     user: IUser;
+  }
+
+  interface IModelPaginate<T> {
+    meta: {
+      current: number;
+      pageSize: number;
+      pages: number;
+      total: number;
+    };
+    result: T[];
   }
 }
