@@ -9,6 +9,7 @@ declare global {
   }
 
   interface ILogin {
+    access_token: string;
     user: {
       uid: number;
       name: string;

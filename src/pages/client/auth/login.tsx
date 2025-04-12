@@ -25,7 +25,7 @@ const LoginPage = () => {
     if (res?.data) {
       setIsAuthenticated(true);
       setUser(res.data.user);
-      //localStorage.setItem("access_token", res.data.access_token);
+      localStorage.setItem("access_token", res.data.access_token);
       message.success("Đăng nhập tài khoản thành công!");
       navigate("/");
     } else {
@@ -55,7 +55,7 @@ const LoginPage = () => {
                 label="Tài khoản"
                 name="username"
                 rules={[
-                  { required: true, message: "Email không được để trống!" },
+                  { required: true, message: "Email không được để trống!" }
                 ]}
               >
                 <Input />

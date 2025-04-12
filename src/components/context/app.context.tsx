@@ -20,7 +20,7 @@ type TProps = {
 export const AppProvider = (props: TProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<IUser | null>(null);
-  const [isAppLoading, setIsAppLoading] = useState<boolean>(false); // set true
+  const [isAppLoading, setIsAppLoading] = useState<boolean>(true); // set true
 
   useEffect(() => {
     const fetchAccount = async () => {
