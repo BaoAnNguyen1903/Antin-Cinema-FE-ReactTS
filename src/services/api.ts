@@ -1,4 +1,10 @@
-import axios from "services/axios.customize";
+import createInstanceAxios from "services/axios.customize";
+
+const axios = createInstanceAxios(import.meta.env.VITE_BACKEND_URL);
+
+// const axiosPayment = createInstanceAxios(
+//   import.meta.env.VITE_BACKEND_PAYMENT_URL
+// );
 
 export const loginAPI = (username: string, password: string) => {
   const urlBackend = "/api/v1/auth/login";
@@ -56,6 +62,18 @@ export const createUserAPI = (
   });
 };
 
+export const bulkCreateUserAPI = (
+  hoidanit: {
+    fullName: string;
+    password: string;
+    email: string;
+    phone: string;
+  }[]
+) => {
+  const urlBackend = "/api/v1/user/bulk-create";
+  return axios.post<IBackendRes<IResponseImport>>(urlBackend, hoidanit);
+};
+
 export const updateUserAPI = (_id: string, fullName: string, phone: string) => {
   const urlBackend = "/api/v1/user";
   return axios.put<IBackendRes<IRegister>>(urlBackend, {
@@ -65,7 +83,7 @@ export const updateUserAPI = (_id: string, fullName: string, phone: string) => {
   });
 };
 
-export const deleteUserAPI = (_id: string) => {
-  const urlBackend = `/api/v1/user/${_id}`;
+export const deleteUserAPI = (uid: number) => {
+  const urlBackend = `/api/v1/user/${uid}`;
   return axios.delete<IBackendRes<IRegister>>(urlBackend);
 };

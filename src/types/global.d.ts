@@ -58,4 +58,10 @@ declare global {
     };
     result: T[];
   }
+
+  interface IResponseImport {
+    countSuccess: number;
+    countError: number;
+    detail: any;
+  }
 }

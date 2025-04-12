@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   AppstoreOutlined,
   ExceptionOutlined,
-  TeamOutlined,
   UserOutlined,
   DollarCircleOutlined,
   MenuFoldOutlined,
@@ -35,25 +34,18 @@ const LayoutAdmin = () => {
       icon: <AppstoreOutlined />
     },
     {
-      label: <span>Manage Users</span>,
+      label: <Link to="/admin/user">Manage Users</Link>,
       key: "/admin/user",
-      icon: <UserOutlined />,
-      children: [
-        {
-          label: <Link to="/admin/user">CRUD Users</Link>,
-          key: "/admin/user",
-          icon: <TeamOutlined />
-        }
-      ]
+      icon: <UserOutlined />
     },
     {
-      label: <Link to="/admin/book">Manage Books</Link>,
+      label: <Link to="/admin/movie">Manage Movies</Link>,
       key: "/admin/book",
       icon: <ExceptionOutlined />
     },
     {
-      label: <Link to="/admin/order">Manage Orders</Link>,
-      key: "/admin/order",
+      label: <Link to="/admin/booking">Manage Bookings</Link>,
+      key: "/admin/booking",
       icon: <DollarCircleOutlined />
     }
   ];
