@@ -16,10 +16,10 @@ import CreateUser from "./create.user";
 import ImportUser from "./import.user";
 import { CSVLink } from "react-csv";
 import UpdateUser from "./update.user";
-// import dayjs from "dayjs";
+import dayjs from "dayjs";
 
 type TSearch = {
-  fullName: string;
+  name: string;
   email: string;
 };
 
@@ -69,7 +69,7 @@ const TableUser = () => {
     },
     {
       title: "Id",
-      dataIndex: "_id",
+      dataIndex: "uid",
       hideInSearch: true,
       render(dom, entity, index, action, schema) {
         return (
@@ -86,31 +86,33 @@ const TableUser = () => {
       }
     },
     {
-      title: "Full Name",
-      dataIndex: "fullName"
+      title: "Name",
+      dataIndex: "name"
+    },
+    {
+      title: "Date of birth",
+      dataIndex: "dob",
+      valueType: "date",
+      hideInSearch: true,
+      render(dom, entity, index, action, schema) {
+        return <>{dayjs(entity.dob).format("DD-MM-YYYY")}</>;
+      }
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      hideInSearch: true
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      hideInSearch: true
     },
     {
       title: "Email",
       dataIndex: "email",
       copyable: true
     },
-    {
-      title: "Created At",
-      dataIndex: "createdAt",
-      valueType: "date",
-      sorter: true,
-      hideInSearch: true
-      //   render(dom, entity, index, action, schema) {
-      //     return <>{dayjs(entity.createdAt).format("DD-MM-YYYY")}</>;
-      //   }
-    },
-    // {
-    //   title: "Created At",
-    //   dataIndex: "createdAtRange",
-    //   valueType: "dateRange",
-    //   hideInTable: true
-    // },
-
     {
       title: "Action",
       hideInSearch: true,

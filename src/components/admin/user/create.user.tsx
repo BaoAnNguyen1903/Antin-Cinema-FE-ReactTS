@@ -88,6 +88,16 @@ const CreateUser = (props: IProps) => {
           </Form.Item>
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
+            label="Tài khoản"
+            name="username"
+            rules={[
+              { required: true, message: "Vui lòng nhập tài khoản hiển thị!" }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
             label="Password"
             name="password"
             rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
@@ -101,16 +111,6 @@ const CreateUser = (props: IProps) => {
             rules={[
               { required: true, message: "Vui lòng nhập email!" },
               { type: "email", message: "Email không đúng định dạng!" }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item<FieldType>
-            labelCol={{ span: 24 }}
-            label="Số điện thoại"
-            name="phone"
-            rules={[
-              { required: true, message: "Vui lòng nhập số điện thoại!" }
             ]}
           >
             <Input />
