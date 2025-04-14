@@ -37,7 +37,7 @@ export const logoutAPI = () => {
 };
 
 export const getUsersAPI = (query: string) => {
-  const urlBackend = `/api/v1/user/?${query}`;
+  const urlBackend = `/api/v1/user/ViewAllUsersList?${query}`;
   return axios.get<IBackendRes<IModelPaginate<IUser>>>(urlBackend);
 };
 
