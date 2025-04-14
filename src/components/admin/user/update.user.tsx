@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { App, Divider, Form, Input, Modal } from "antd";
+import { App, Divider, Form, Input, Modal, Select } from "antd";
 import type { FormProps } from "antd";
 import { updateUserAPI } from "@/services/api";
 
@@ -12,10 +12,16 @@ interface IProps {
 }
 
 type FieldType = {
-  _id: string;
-  email: string;
-  fullName: string;
+  uid: number;
+  name: string;
+  dob: Date;
+  gender: string;
   phone: string;
+  email: string;
+  username: string;
+  points: number;
+  status: number;
+  role: string;
 };
 
 const UpdateUser = (props: IProps) => {
@@ -41,15 +47,29 @@ const UpdateUser = (props: IProps) => {
         gender: dataUpdate.gender,
         phone: dataUpdate.phone,
         email: dataUpdate.email,
-        
+        username: dataUpdate.username,
+        points: dataUpdate.points,
+        status: dataUpdate.status,
+        role: dataUpdate.role
       });
     }
   }, [dataUpdate]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { _id, fullName, phone } = values;
+    const { uid, name, dob, gender, phone, email, points, status, role } =
+      values;
     setIsSubmit(true);
-    const res = await updateUserAPI(_id, fullName, phone);
+    const res = await updateUserAPI(
+      uid,
+      name,
+      dob,
+      gender,
+      phone,
+      email,
+      points,
+      status,
+      role
+    );
     if (res && res.data) {
       message.success("Cập nhật user thành công");
       form.resetFields();
@@ -94,11 +114,53 @@ const UpdateUser = (props: IProps) => {
           <Form.Item<FieldType>
             hidden
             labelCol={{ span: 24 }}
-            label="_id"
-            name="_id"
-            rules={[{ required: true, message: "Vui lòng nhập _id!" }]}
+            label="uid"
+            name="uid"
+            rules={[{ required: true, message: "Vui lòng nhập uid!" }]}
           >
             <Input disabled />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Tên hiển thị"
+            name="name"
+            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Ngày sinh"
+            name="dob"
+            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Giới tính"
+            name="gender"
+            rules={[{ required: true, message: "Vui lòng chọn giới tính!" }]}
+          >
+            <Select placeholder="Chọn giới tính">
+              <Select.Option value="M">Nam</Select.Option>
+              <Select.Option value="F">Nữ</Select.Option>
+              <Select.Option value="O">Khác</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Số điện thoại"
+            name="phone"
+            rules={[
+              { required: true, message: "Vui lòng nhập số điện thoại!" }
+            ]}
+          >
+            <Input />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -115,20 +177,18 @@ const UpdateUser = (props: IProps) => {
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Tên hiển thị"
-            name="fullName"
-            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+            label="Tài khoản"
+            name="username"
+            rules={[{ required: true, message: "Vui lòng nhập tài khoản!" }]}
           >
-            <Input />
+            <Input disabled />
           </Form.Item>
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Số điện thoại"
-            name="phone"
-            rules={[
-              { required: true, message: "Vui lòng nhập số điện thoại!" }
-            ]}
+            label="Tích điểm"
+            name="points"
+            rules={[{ required: true, message: "Vui lòng nhập tích điểm!" }]}
           >
             <Input />
           </Form.Item>

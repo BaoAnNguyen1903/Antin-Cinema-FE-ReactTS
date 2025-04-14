@@ -60,7 +60,7 @@ const DetailUser = (props: IProps) => {
           <Descriptions.Item label="Điểm thưởng">
             {dataViewDetail?.points}
           </Descriptions.Item>
-          <Descriptions.Item label="Điểm thưởng">
+          <Descriptions.Item label="Trạng thái">
             {dataViewDetail?.status}
           </Descriptions.Item>
           <Descriptions.Item label="Role">

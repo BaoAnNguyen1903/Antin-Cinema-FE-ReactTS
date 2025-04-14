@@ -43,11 +43,11 @@ const TableMovie = () => {
   const [openModalUpdate, setOpenModalUpdate] = useState<boolean>(false);
   const [dataUpdate, setDataUpdate] = useState<IUser | null>(null);
 
-  const [isDeleteUser, setIsDeleteUser] = useState<boolean>(false);
+  const [isDeleteMovie, setIsDeleteMovie] = useState<boolean>(false);
   const { message, notification } = App.useApp();
 
-  const handleDeleteUser = async (uid: number) => {
-    setIsDeleteUser(true);
+  const handleDeleteMovie = async (uid: number) => {
+    setIsDeleteMovie(true);
     const res = await deleteUserAPI(uid);
     if (res && res.data) {
       message.success("Xóa user thành công");
@@ -58,7 +58,7 @@ const TableMovie = () => {
         description: res.message
       });
     }
-    setIsDeleteUser(false);
+    setIsDeleteMovie(false);
   };
 
   const columns: ProColumns<IUser>[] = [
@@ -131,10 +131,10 @@ const TableMovie = () => {
               placement="leftTop"
               title={"Xác nhận xóa user"}
               description={"Bạn có chắc chắn muốn xóa user này ?"}
-              onConfirm={() => handleDeleteUser(entity.uid)}
+              onConfirm={() => handleDeleteMovie(entity.mid)}
               okText="Xác nhận"
               cancelText="Hủy"
-              okButtonProps={{ loading: isDeleteUser }}
+              okButtonProps={{ loading: isDeleteMovie }}
             >
               <span style={{ cursor: "pointer", marginLeft: 20 }}>
                 <DeleteTwoTone

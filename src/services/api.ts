@@ -58,7 +58,8 @@ export const createUserAPI = (
 
 export const bulkCreateUserAPI = (
   hoidanit: {
-    fullName: string;
+    name: string;
+    username: string;
     password: string;
     email: string;
     phone: string;
@@ -68,12 +69,28 @@ export const bulkCreateUserAPI = (
   return axios.post<IBackendRes<IResponseImport>>(urlBackend, hoidanit);
 };
 
-export const updateUserAPI = (_id: string, fullName: string, phone: string) => {
+export const updateUserAPI = (
+  uid: number,
+  name: string,
+  dob: Date,
+  gender: string,
+  phone: string,
+  email: string,
+  points: number,
+  status: number,
+  role: string
+) => {
   const urlBackend = "/api/v1/user";
   return axios.put<IBackendRes<IRegister>>(urlBackend, {
-    _id,
-    fullName,
-    phone
+    uid,
+    name,
+    dob,
+    gender,
+    phone,
+    email,
+    role,
+    status,
+    points
   });
 };
 

@@ -30,7 +30,7 @@ const LayoutAdmin = () => {
 
   const items: MenuItem[] = [
     {
-      label: <Link to="/admin">Dashboard</Link>,
+      label: <Link to="/admin">Revenue</Link>,
       key: "/admin",
       icon: <LineChartOutlined />
     },

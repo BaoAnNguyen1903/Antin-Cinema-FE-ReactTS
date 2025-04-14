@@ -16,7 +16,8 @@ interface IProps {
 }
 
 interface IDataImport {
-  fullName: string;
+  name: string;
+  username: string;
   email: string;
   phone: string;
 }
@@ -97,7 +98,8 @@ const ImportUser = (props: IProps) => {
   const handleImport = async () => {
     setIsSubmit(true);
     const dataSubmit = dataImport.map((item) => ({
-      fullName: item.fullName,
+      name: item.name,
+      username: item.username,
       email: item.email,
       phone: item.phone,
       password: import.meta.env.VITE_USER_CREATE_DEFAULT_PASSWORD
@@ -160,7 +162,8 @@ const ImportUser = (props: IProps) => {
             title={() => <span>Dữ liệu upload:</span>}
             dataSource={dataImport}
             columns={[
-              { dataIndex: "fullName", title: "Tên hiển thị" },
+              { dataIndex: "name", title: "Tên hiển thị" },
+              { dataIndex: "username", title: "Tài khoản"},
               { dataIndex: "email", title: "Email" },
               { dataIndex: "phone", title: "Số điện thoại" }
             ]}

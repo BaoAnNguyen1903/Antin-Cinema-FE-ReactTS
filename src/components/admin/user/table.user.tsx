@@ -166,23 +166,10 @@ const TableUser = () => {
             if (params.email) {
               query += `&email=/${params.email}/i`;
             }
-            if (params.fullName) {
-              query += `&fullName=/${params.fullName}/i`;
-            }
-
-            const createDateRange = dateRangeValidate(params.createdAtRange);
-            if (createDateRange) {
-              query += `&createdAt>=${createDateRange[0]}&createdAt<=${createDateRange[1]}`;
+            if (params.name) {
+              query += `&name=/${params.name}/i`;
             }
           }
-
-          //default
-
-          if (sort && sort.createdAt) {
-            query += `&sort=${
-              sort.createdAt === "ascend" ? "createdAt" : "-createdAt"
-            }`;
-          } else query += `&sort=-createdAt`;
 
           const res = await getUsersAPI(query);
           if (res.data) {
@@ -196,7 +183,7 @@ const TableUser = () => {
             total: res.data?.meta.total
           };
         }}
-        rowKey="_id"
+        rowKey="uid"
         pagination={{
           current: meta.current,
           pageSize: meta.pageSize,
