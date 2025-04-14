@@ -64,4 +64,17 @@ declare global {
     countError: number;
     detail: any;
   }
+
+  interface IMovieType {
+    mtid: number;
+    movieTypeName: string;
+  }
+
+  interface IMovie {
+    mid: number;
+    movieName: string;
+    movieDescription: string;
+    movieDirector: string;
+    movieActor: string;
+  }
 }
