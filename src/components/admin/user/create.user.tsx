@@ -11,9 +11,6 @@ interface IProps {
 
 type FieldType = {
   name: string;
-  dob: Date;
-  gender: string;
-  phone: string;
   email: string;
   username: string;
   password: string;
@@ -28,17 +25,9 @@ const CreateUser = (props: IProps) => {
   const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { name, dob, gender, username, password, email, phone } = values;
+    const { name, username, password, email } = values;
     setIsSubmit(true);
-    const res = await createUserAPI(
-      name,
-      dob,
-      gender,
-      username,
-      password,
-      email,
-      phone
-    );
+    const res = await createUserAPI(name, username, password, email);
     if (res && res.data) {
       message.success("Tạo mới user thành công");
       form.resetFields();
@@ -88,6 +77,17 @@ const CreateUser = (props: IProps) => {
           </Form.Item>
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Vui lòng nhập email!" },
+              { type: "email", message: "Email không đúng định dạng!" }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
             label="Tài khoản"
             name="username"
             rules={[
@@ -103,17 +103,6 @@ const CreateUser = (props: IProps) => {
             rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
           >
             <Input.Password />
-          </Form.Item>
-          <Form.Item<FieldType>
-            labelCol={{ span: 24 }}
-            label="Email"
-            name="email"
-            rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không đúng định dạng!" }
-            ]}
-          >
-            <Input />
           </Form.Item>
         </Form>
       </Modal>

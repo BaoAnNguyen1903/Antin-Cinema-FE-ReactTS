@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  AppstoreOutlined,
-  ExceptionOutlined,
   UserOutlined,
   DollarCircleOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
+  LineChartOutlined,
+  PlayCircleOutlined,
+  CalendarOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Space, Avatar } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -31,7 +32,7 @@ const LayoutAdmin = () => {
     {
       label: <Link to="/admin">Dashboard</Link>,
       key: "/admin",
-      icon: <AppstoreOutlined />
+      icon: <LineChartOutlined />
     },
     {
       label: <Link to="/admin/user">Manage Users</Link>,
@@ -41,7 +42,12 @@ const LayoutAdmin = () => {
     {
       label: <Link to="/admin/movie">Manage Movies</Link>,
       key: "/admin/book",
-      icon: <ExceptionOutlined />
+      icon: <PlayCircleOutlined />
+    },
+    {
+      label: <Link to="/admin/showtime">Manage Showtimes</Link>,
+      key: "/admin/showtime",
+      icon: <CalendarOutlined />
     },
     {
       label: <Link to="/admin/booking">Manage Bookings</Link>,

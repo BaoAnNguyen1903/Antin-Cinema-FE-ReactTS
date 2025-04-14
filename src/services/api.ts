@@ -47,7 +47,7 @@ export const createUserAPI = (
   username: string,
   password: string
 ) => {
-  const urlBackend = "/api/v1/user";
+  const urlBackend = "/api/v1/user/CreateUser";
   return axios.post<IBackendRes<IRegister>>(urlBackend, {
     name,
     username,

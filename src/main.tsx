@@ -15,6 +15,7 @@ import ManageUserPage from "pages/admin/manage.user";
 import ManageMoviePage from "pages/admin/manage.movie";
 import ManageBookingPage from "pages/admin/manage.booking";
 import enUS from "antd/locale/en_US";
+import ManageShowtimePage from "./pages/admin/manage.showtime";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ManageMoviePage />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: "showtime",
+        element: (
+          <ProtectedRoute>
+            <ManageShowtimePage />
           </ProtectedRoute>
         )
       },
