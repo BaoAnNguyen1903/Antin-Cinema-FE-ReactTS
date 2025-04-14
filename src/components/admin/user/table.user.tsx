@@ -21,8 +21,6 @@ import UpdateUser from "./update.user";
 type TSearch = {
   fullName: string;
   email: string;
-  createdAt: string;
-  createdAtRange: string;
 };
 
 const TableUser = () => {
@@ -106,12 +104,12 @@ const TableUser = () => {
       //     return <>{dayjs(entity.createdAt).format("DD-MM-YYYY")}</>;
       //   }
     },
-    {
-      title: "Created At",
-      dataIndex: "createdAtRange",
-      valueType: "dateRange",
-      hideInTable: true
-    },
+    // {
+    //   title: "Created At",
+    //   dataIndex: "createdAtRange",
+    //   valueType: "dateRange",
+    //   hideInTable: true
+    // },
 
     {
       title: "Action",
