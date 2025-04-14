@@ -4,7 +4,7 @@ import Layout from "@/layout.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "pages/client/home.tsx";
 import UuDai from "pages/client/uuDai/uuDai";
-import { App } from "antd";
+import { App, ConfigProvider } from "antd";
 import { AppProvider } from "components/context/app.context";
 import LoginPage from "pages/client/auth/login";
 import RegisterPage from "pages/client/auth/register";
@@ -14,6 +14,7 @@ import DashBoardPage from "pages/admin/dashboard";
 import ManageUserPage from "pages/admin/manage.user";
 import ManageMoviePage from "pages/admin/manage.movie";
 import ManageBookingPage from "pages/admin/manage.booking";
+import enUS from "antd/locale/en_US";
 
 const router = createBrowserRouter([
   {
@@ -82,7 +83,9 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App>
       <AppProvider>
-        <RouterProvider router={router} />
+        <ConfigProvider locale={enUS}>
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </AppProvider>
     </App>
   </StrictMode>
