@@ -41,7 +41,7 @@ const LayoutAdmin = () => {
     },
     {
       label: <Link to="/admin/movie">Manage Movies</Link>,
-      key: "/admin/book",
+      key: "/admin/movie",
       icon: <PlayCircleOutlined />
     },
     {
