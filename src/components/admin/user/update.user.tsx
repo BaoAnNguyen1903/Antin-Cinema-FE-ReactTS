@@ -56,8 +56,18 @@ const UpdateUser = (props: IProps) => {
   }, [dataUpdate]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { uid, name, dob, gender, phone, email, points, status, role } =
-      values;
+    const {
+      uid,
+      name,
+      dob,
+      gender,
+      phone,
+      email,
+      username,
+      points,
+      status,
+      role
+    } = values;
     setIsSubmit(true);
     const res = await updateUserAPI(
       uid,
@@ -66,6 +76,7 @@ const UpdateUser = (props: IProps) => {
       gender,
       phone,
       email,
+      username,
       points,
       status,
       role

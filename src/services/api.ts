@@ -81,7 +81,7 @@ export const updateUserAPI = (
   status: number,
   role: string
 ) => {
-  const urlBackend = "/api/v1/user";
+  const urlBackend = "/api/v1/user/UpdateUser";
   return axios.put<IBackendRes<IRegister>>(urlBackend, {
     uid,
     name,
