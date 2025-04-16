@@ -17,6 +17,8 @@ import ManageBookingPage from "pages/admin/manage.booking";
 import enUS from "antd/locale/en_US";
 import ManageShowtimePage from "./pages/admin/manage.showtime";
 
+import WeekDatePicker from "./pages/client/uuDai/Test";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -85,6 +87,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />
+  },
+  {
+    path: "/test",
+    element: <WeekDatePicker />
   }
 ]);
 

@@ -261,32 +261,32 @@ const TableMovie = () => {
           </Button>
         ]}
       />
-      {/* <DetailUser
+      <DetailMovie
         openViewDetail={openViewDetail}
         setOpenViewDetail={setOpenViewDetail}
         dataViewDetail={dataViewDetail}
         setDataViewDetail={setDataViewDetail}
       />
 
-      <CreateUser
+      <CreateMovie
         openModalCreate={openModalCreate}
         setOpenModalCreate={setOpenModalCreate}
         refreshTable={refreshTable}
       />
 
-      <ImportUser
+      <ImportMovie
         openModalImport={openModalImport}
         setOpenModalImport={setOpenModalImport}
         refreshTable={refreshTable}
       />
 
-      <UpdateUser
+      <UpdateMovie
         openModalUpdate={openModalUpdate}
         setOpenModalUpdate={setOpenModalUpdate}
         refreshTable={refreshTable}
         setDataUpdate={setDataUpdate}
         dataUpdate={dataUpdate}
-      /> */}
+      />
     </>
   );
 };

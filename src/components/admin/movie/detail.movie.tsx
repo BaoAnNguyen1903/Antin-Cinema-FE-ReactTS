@@ -39,33 +39,6 @@ const DetailMovie = (props: IProps) => {
           <Descriptions.Item label="Tên phim">
             {dataViewDetail?.movieName}
           </Descriptions.Item>
-          <Descriptions.Item label="Ngày sinh">
-            {dayjs(dataViewDetail?.dob).format(FORMATE_DATE_VN)}
-          </Descriptions.Item>
-          <Descriptions.Item label="Giới tính">
-            {dataViewDetail?.gender}
-          </Descriptions.Item>
-          <Descriptions.Item label="Số điện thoại">
-            {dataViewDetail?.phone}
-          </Descriptions.Item>
-          <Descriptions.Item label="Email">
-            {dataViewDetail?.email}
-          </Descriptions.Item>
-          <Descriptions.Item label="Tài khoản">
-            {dataViewDetail?.username}
-          </Descriptions.Item>
-          <Descriptions.Item label="Avatar">
-            <Avatar size={40} src={avatarURL}></Avatar>
-          </Descriptions.Item>
-          <Descriptions.Item label="Điểm thưởng">
-            {dataViewDetail?.points}
-          </Descriptions.Item>
-          <Descriptions.Item label="Trạng thái">
-            {dataViewDetail?.status}
-          </Descriptions.Item>
-          <Descriptions.Item label="Role">
-            <Badge status="processing" text={dataViewDetail?.role} />
-          </Descriptions.Item>
         </Descriptions>
       </Drawer>
     </>
