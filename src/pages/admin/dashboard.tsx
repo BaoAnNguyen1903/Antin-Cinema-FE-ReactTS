@@ -1,10 +1,9 @@
-// import AdminDashboard from "@/components/admin/dashboard";
+import RevenueDashboard from "@/components/admin/revenue";
 
 const DashBoardPage = () => {
   return (
     <div>
-      {/* <AdminDashboard /> */}
-      dashboard page
+      <RevenueDashboard />
     </div>
   );
 };
