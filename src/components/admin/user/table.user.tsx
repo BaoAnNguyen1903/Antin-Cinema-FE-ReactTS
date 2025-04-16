@@ -54,8 +54,8 @@ const TableUser = () => {
       refreshTable();
     } else {
       notification.error({
-        message: "Đã có lỗi xảy ra",
-        description: res.message
+        message: "Admin không cho xóa =))"
+        // description: res.message
       });
     }
     setIsDeleteUser(false);
