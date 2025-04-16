@@ -39,8 +39,13 @@ const DetailUser = (props: IProps) => {
           <Descriptions.Item label="Tên hiển thị">
             {dataViewDetail?.name}
           </Descriptions.Item>
-          <Descriptions.Item label="Ngày sinh">
+          {/* <Descriptions.Item label="Ngày sinh">
             {dayjs(dataViewDetail?.dob).format(FORMATE_DATE_VN)}
+          </Descriptions.Item> */}
+          <Descriptions.Item label="Ngày sinh">
+            {dataViewDetail?.dob
+              ? dayjs(dataViewDetail.dob).format(FORMATE_DATE_VN)
+              : null}
           </Descriptions.Item>
           <Descriptions.Item label="Giới tính">
             {dataViewDetail?.gender}

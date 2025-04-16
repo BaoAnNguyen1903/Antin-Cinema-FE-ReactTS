@@ -89,15 +89,17 @@ const TableUser = () => {
       title: "Name",
       dataIndex: "name"
     },
-    {
-      title: "Date of birth",
-      dataIndex: "dob",
-      valueType: "date",
-      hideInSearch: true,
-      render(dom, entity, index, action, schema) {
-        return <>{dayjs(entity.dob).format("DD-MM-YYYY")}</>;
-      }
-    },
+    // {
+    //   title: "Date of birth",
+    //   dataIndex: "dob",
+    //   valueType: "date",
+    //   hideInSearch: true,
+    //   render(dom, entity, index, action, schema) {
+    //     return (
+    //       <>{entity.dob ? dayjs(entity.dob).format("DD-MM-YYYY") : null}</>
+    //     );
+    //   }
+    // },
     {
       title: "Gender",
       dataIndex: "gender",
