@@ -1,4 +1,4 @@
-import { deleteUserAPI, getUsersAPI } from "@/services/api";
+import { deleteUserAPI, getMoviesAPI } from "@/services/api";
 import { dateRangeValidate } from "@/services/helper";
 import {
   CloudUploadOutlined,

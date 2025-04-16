@@ -41,6 +41,11 @@ export const getUsersAPI = (query: string) => {
   return axios.get<IBackendRes<IModelPaginate<IUser>>>(urlBackend);
 };
 
+export const getMoviesAPI = (query: string) => {
+  const urlBackend = `/api/v1/movie/ViewAllMovieList?${query}`;
+  return axios.get<IBackendRes<IModelPaginate<IMovie>>>(urlBackend);
+};
+
 export const createUserAPI = (
   name: string,
   username: string,
