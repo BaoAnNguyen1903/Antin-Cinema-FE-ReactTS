@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { App, Divider, Form, Input, Modal, Select } from "antd";
+import { App, Divider, Form, Input, InputNumber, Modal, Select } from "antd";
 import type { FormProps } from "antd";
 import { updateUserAPI } from "@/services/api";
 
@@ -199,9 +199,12 @@ const UpdateUser = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Tích điểm"
             name="points"
-            rules={[{ required: true, message: "Vui lòng nhập tích điểm!" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập tích điểm!" },
+              { type: "number", max: 2147483647, message: "Giá trị quá lớn!" }
+            ]}
           >
-            <Input />
+            <InputNumber style={{ width: "100%" }} min={0} max={2147483647} />
           </Form.Item>
         </Form>
       </Modal>
