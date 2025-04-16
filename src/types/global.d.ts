@@ -70,11 +70,30 @@ declare global {
     movieTypeName: string;
   }
 
+  interface IMovieLanguage {
+    mlid: number;
+    movieLanguageName: string;
+  }
+
+  interface IMovieRated {
+    mrid: number;
+    movieRatedName: string;
+  }
+
   interface IMovie {
     mid: number;
     movieName: string;
     movieDescription: string;
     movieDirector: string;
     movieActor: string;
+    movieType: IMovieType;
+    movieTime: string;
+    movieLanguage: IMovieLanguage;
+    movieRated: IMovieRated;
+    poster: string;
+    panner: string;
+    openday: Date;
+    closeday: Date;
+    movieStatus: number;
   }
 }

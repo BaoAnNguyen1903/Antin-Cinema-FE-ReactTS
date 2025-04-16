@@ -1,9 +1,11 @@
-const ManageMoviePage = () => {
-    return (
-        <div>
-            manage movie page
-        </div>
-    )
-}
+import TableMovie from "@/components/admin/movie/table.movie";
 
-export default ManageMoviePage
+const ManageMoviePage = () => {
+  return (
+    <div>
+      <TableMovie />
+    </div>
+  );
+};
+
+export default ManageMoviePage;

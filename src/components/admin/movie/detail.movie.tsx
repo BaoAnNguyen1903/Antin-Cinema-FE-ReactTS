@@ -8,7 +8,7 @@ interface IProps {
   dataViewDetail: IMovie | null;
   setDataViewDetail: (v: IMovie | null) => void;
 }
-const DetailUser = (props: IProps) => {
+const DetailMovie = (props: IProps) => {
   const {
     openViewDetail,
     setOpenViewDetail,
@@ -36,8 +36,8 @@ const DetailUser = (props: IProps) => {
           <Descriptions.Item label="Id">
             {dataViewDetail?.mid}
           </Descriptions.Item>
-          <Descriptions.Item label="Tên hiển thị">
-            {dataViewDetail?.name}
+          <Descriptions.Item label="Tên phim">
+            {dataViewDetail?.movieName}
           </Descriptions.Item>
           <Descriptions.Item label="Ngày sinh">
             {dayjs(dataViewDetail?.dob).format(FORMATE_DATE_VN)}
@@ -71,4 +71,4 @@ const DetailUser = (props: IProps) => {
     </>
   );
 };
-export default DetailUser;
+export default DetailMovie;

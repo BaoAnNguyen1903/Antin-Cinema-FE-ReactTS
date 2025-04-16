@@ -165,11 +165,19 @@ const TableUser = () => {
           let query = "";
           if (params) {
             query += `current=${params.current}&pageSize=${params.pageSize}`;
+            // Cách viết /value/i là cú pháp RegExp trong MongoDB
+            // if (params.email) {
+            //   query += `&email=/${params.email}/i`;
+            // }
+            // if (params.name) {
+            //   query += `&name=/${params.name}/i`;
+            // }
+
             if (params.email) {
-              query += `&email=/${params.email}/i`;
+              query += `&email=${encodeURIComponent(params.email)}`;
             }
             if (params.name) {
-              query += `&name=/${params.name}/i`;
+              query += `&name=${encodeURIComponent(params.name)}`;
             }
           }
 

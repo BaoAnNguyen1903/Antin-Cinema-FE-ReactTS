@@ -11,16 +11,18 @@ import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable } from "@ant-design/pro-components";
 import { App, Button, Popconfirm } from "antd";
 import { useRef, useState } from "react";
-import DetailUser from "./detail.user";
-import CreateUser from "./create.user";
-import ImportUser from "./import.user";
+import DetailMovie from "./detail.movie";
+import CreateMovie from "./create.movie";
+import ImportMovie from "./import.movie";
 import { CSVLink } from "react-csv";
-import UpdateUser from "./update.user";
+import UpdateMovie from "./update.movie";
 import dayjs from "dayjs";
 
 type TSearch = {
-  movie_name: string;
-  email: string;
+  movieName: string;
+  movieType: string;
+  openday: string;
+  opendayAtRange: string;
 };
 
 const TableMovie = () => {
@@ -33,24 +35,24 @@ const TableMovie = () => {
   });
 
   const [openViewDetail, setOpenViewDetail] = useState<boolean>(false);
-  const [dataViewDetail, setDataViewDetail] = useState<IUser | null>(null);
+  const [dataViewDetail, setDataViewDetail] = useState<IMovie | null>(null);
 
   const [openModalCreate, setOpenModalCreate] = useState<boolean>(false);
   const [openModalImport, setOpenModalImport] = useState<boolean>(false);
 
-  const [currentDataTable, setCurrentDataTable] = useState<IUser[]>([]); // tạo state để lưu data để export
+  const [currentDataTable, setCurrentDataTable] = useState<IMovie[]>([]); // tạo state để lưu data để export
 
   const [openModalUpdate, setOpenModalUpdate] = useState<boolean>(false);
-  const [dataUpdate, setDataUpdate] = useState<IUser | null>(null);
+  const [dataUpdate, setDataUpdate] = useState<IMovie | null>(null);
 
   const [isDeleteMovie, setIsDeleteMovie] = useState<boolean>(false);
   const { message, notification } = App.useApp();
 
-  const handleDeleteMovie = async (uid: number) => {
+  const handleDeleteMovie = async (mid: number) => {
     setIsDeleteMovie(true);
-    const res = await deleteUserAPI(uid);
+    const res = await deleteUserAPI(mid);
     if (res && res.data) {
-      message.success("Xóa user thành công");
+      message.success("Xóa movie thành công");
       refreshTable();
     } else {
       notification.error({
@@ -61,7 +63,7 @@ const TableMovie = () => {
     setIsDeleteMovie(false);
   };
 
-  const columns: ProColumns<IUser>[] = [
+  const columns: ProColumns<IMovie>[] = [
     {
       dataIndex: "index",
       valueType: "indexBorder",
@@ -69,7 +71,7 @@ const TableMovie = () => {
     },
     {
       title: "Id",
-      dataIndex: "uid",
+      dataIndex: "mid",
       hideInSearch: true,
       render(dom, entity, index, action, schema) {
         return (
@@ -80,38 +82,59 @@ const TableMovie = () => {
             }}
             href="#"
           >
-            {entity.uid}
+            {entity.mid}
           </a>
         );
       }
     },
     {
-      title: "Name",
-      dataIndex: "name"
+      title: "Tên phim",
+      dataIndex: "movieName"
     },
     {
-      title: "Date of birth",
-      dataIndex: "dob",
+      title: "Thể loại",
+      dataIndex: "movieType"
+    },
+    {
+      title: "Thời lượng",
+      dataIndex: "movieTime",
+      hideInSearch: true
+    },
+    {
+      title: "Ngày ra mắt",
+      dataIndex: "openday",
       valueType: "date",
+      sorter: true,
       hideInSearch: true,
       render(dom, entity, index, action, schema) {
-        return <>{dayjs(entity.dob).format("DD-MM-YYYY")}</>;
+        return (
+          <>
+            {entity.openday ? dayjs(entity.openday).format("DD-MM-YYYY") : null}
+          </>
+        );
       }
     },
+    // {
+    //   title: "Ngày kết thúc",
+    //   dataIndex: "closeday",
+    //   valueType: "date",
+    //   sorter: true,
+    //   hideInSearch: true,
+    //   render(dom, entity, index, action, schema) {
+    //     return (
+    //       <>
+    //         {entity.closeday
+    //           ? dayjs(entity.closeday).format("DD-MM-YYYY")
+    //           : null}
+    //       </>
+    //     );
+    //   }
+    // },
     {
-      title: "Gender",
-      dataIndex: "gender",
-      hideInSearch: true
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      hideInSearch: true
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      copyable: true
+      title: "Ngày ra mắt",
+      dataIndex: "opendayAtRange",
+      valueType: "dateRange",
+      hideInTable: true
     },
     {
       title: "Action",
@@ -129,8 +152,8 @@ const TableMovie = () => {
             />
             <Popconfirm
               placement="leftTop"
-              title={"Xác nhận xóa user"}
-              description={"Bạn có chắc chắn muốn xóa user này ?"}
+              title={"Xác nhận xóa movie"}
+              description={"Bạn có chắc chắn muốn xóa movie này ?"}
               onConfirm={() => handleDeleteMovie(entity.mid)}
               okText="Xác nhận"
               cancelText="Hủy"
@@ -155,7 +178,7 @@ const TableMovie = () => {
 
   return (
     <>
-      <ProTable<IUser, TSearch>
+      <ProTable<IMovie, TSearch>
         columns={columns}
         actionRef={actionRef}
         cardBordered
@@ -163,14 +186,14 @@ const TableMovie = () => {
           let query = "";
           if (params) {
             query += `current=${params.current}&pageSize=${params.pageSize}`;
-            if (params.email) {
-              query += `&email=/${params.email}/i`;
+            if (params.movieName) {
+              query += `&movieName=/${params.movieName}/i`;
             }
-            if (params.fullName) {
-              query += `&fullName=/${params.fullName}/i`;
+            if (params.movieType) {
+              query += `&movieType=/${params.movieType}/i`;
             }
 
-            const createDateRange = dateRangeValidate(params.createdAtRange);
+            const createDateRange = dateRangeValidate(params.opendayAtRange);
             if (createDateRange) {
               query += `&createdAt>=${createDateRange[0]}&createdAt<=${createDateRange[1]}`;
             }
@@ -184,7 +207,7 @@ const TableMovie = () => {
             }`;
           } else query += `&sort=-createdAt`;
 
-          const res = await getUsersAPI(query);
+          const res = await getMoviesAPI(query);
           if (res.data) {
             setMeta(res.data.meta);
             setCurrentDataTable(res.data?.result ?? []); // gán data để export
@@ -196,7 +219,7 @@ const TableMovie = () => {
             total: res.data?.meta.total
           };
         }}
-        rowKey="_id"
+        rowKey="mid"
         pagination={{
           current: meta.current,
           pageSize: meta.pageSize,
@@ -211,9 +234,9 @@ const TableMovie = () => {
             );
           }
         }}
-        headerTitle="Table user"
+        headerTitle="Table Movie"
         toolBarRender={() => [
-          <CSVLink data={currentDataTable} filename="export-user.csv">
+          <CSVLink data={currentDataTable} filename="export-movie.csv">
             <Button icon={<ExportOutlined />} type="primary">
               Export
             </Button>
@@ -238,7 +261,7 @@ const TableMovie = () => {
           </Button>
         ]}
       />
-      <DetailUser
+      {/* <DetailUser
         openViewDetail={openViewDetail}
         setOpenViewDetail={setOpenViewDetail}
         dataViewDetail={dataViewDetail}
@@ -263,7 +286,7 @@ const TableMovie = () => {
         refreshTable={refreshTable}
         setDataUpdate={setDataUpdate}
         dataUpdate={dataUpdate}
-      />
+      /> */}
     </>
   );
 };
