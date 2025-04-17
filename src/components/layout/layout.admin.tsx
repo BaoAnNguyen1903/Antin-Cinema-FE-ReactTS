@@ -123,7 +123,7 @@ const LayoutAdmin = () => {
           onCollapse={(value) => setCollapsed(value)}
         >
           <div style={{ height: 32, margin: 16, textAlign: "center" }}>
-            Admin
+            Antin Cinema
           </div>
           <Menu
             // defaultSelectedKeys={[activeMenu]}

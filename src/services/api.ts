@@ -12,17 +12,17 @@ export const loginAPI = (username: string, password: string) => {
 };
 
 export const registerAPI = (
-  fullName: string,
-  email: string,
+  name: string,
+  username: string,
   password: string,
-  phone: string
+  email: string
 ) => {
   const urlBackend = "/api/v1/auth/register";
   return axios.post<IBackendRes<IRegister>>(urlBackend, {
-    fullName,
-    email,
+    name,
+    username,
     password,
-    phone
+    email
   });
 };
 

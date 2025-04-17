@@ -6,10 +6,10 @@ import "./register.scss";
 import { registerAPI } from "@/services/api";
 
 type FieldType = {
-  fullName: string;
-  email: string;
+  name: string;
+  username: string;
   password: string;
-  phone: string;
+  email: string;
 };
 
 const RegisterPage = () => {
@@ -19,9 +19,9 @@ const RegisterPage = () => {
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setIsSubmit(true);
-    const { email, fullName, password, phone } = values;
+    const { name, username, password, email } = values;
 
-    const res = await registerAPI(fullName, email, password, phone);
+    const res = await registerAPI(name, username, password, email);
     if (res.data) {
       //success
       message.success("Đăng ký user thành công.");
@@ -46,7 +46,7 @@ const RegisterPage = () => {
               <Form.Item<FieldType>
                 labelCol={{ span: 24 }} //whole column
                 label="Họ tên"
-                name="fullName"
+                name="name"
                 rules={[
                   { required: true, message: "Họ tên không được để trống!" }
                 ]}
@@ -56,11 +56,10 @@ const RegisterPage = () => {
 
               <Form.Item<FieldType>
                 labelCol={{ span: 24 }} //whole column
-                label="Email"
-                name="email"
+                label="Tài khoản"
+                name="username"
                 rules={[
-                  { required: true, message: "Email không được để trống!" },
-                  { type: "email", message: "Email không đúng định dạng!" }
+                  { required: true, message: "Họ tên không được để trống!" }
                 ]}
               >
                 <Input />
@@ -76,15 +75,14 @@ const RegisterPage = () => {
               >
                 <Input.Password />
               </Form.Item>
+
               <Form.Item<FieldType>
                 labelCol={{ span: 24 }} //whole column
-                label="Số điện thoại"
-                name="phone"
+                label="Email"
+                name="email"
                 rules={[
-                  {
-                    required: true,
-                    message: "Số điện thoại không được để trống!"
-                  }
+                  { required: true, message: "Email không được để trống!" },
+                  { type: "email", message: "Email không đúng định dạng!" }
                 ]}
               >
                 <Input />

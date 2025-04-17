@@ -28,7 +28,7 @@ declare global {
   interface IRegister {
     uid: string;
     username: string;
-    fullName: string;
+    name: string;
   }
 
   interface IUser {
