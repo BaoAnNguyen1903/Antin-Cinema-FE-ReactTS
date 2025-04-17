@@ -27,7 +27,7 @@ const TableUser = () => {
   const actionRef = useRef<ActionType>();
   const [meta, setMeta] = useState({
     current: 1,
-    pageSize: 5,
+    pageSize: 10,
     pages: 0,
     total: 0
   });
@@ -68,7 +68,7 @@ const TableUser = () => {
       width: 48
     },
     {
-      title: "Id",
+      title: "ID",
       dataIndex: "uid",
       hideInSearch: true,
       render(dom, entity, index, action, schema) {

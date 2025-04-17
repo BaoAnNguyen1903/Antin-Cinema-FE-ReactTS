@@ -70,7 +70,7 @@ const TableMovie = () => {
       width: 48
     },
     {
-      title: "Id",
+      title: "ID",
       dataIndex: "mid",
       hideInSearch: true,
       render(dom, entity, index, action, schema) {
@@ -93,7 +93,8 @@ const TableMovie = () => {
     },
     {
       title: "Thể loại",
-      dataIndex: "movieType"
+      dataIndex: ["movieType", "movieTypeName"], // Truy xuất nested object
+      render: (_, record) => record.movieType?.movieTypeName || "-"
     },
     {
       title: "Thời lượng",
@@ -114,22 +115,22 @@ const TableMovie = () => {
         );
       }
     },
-    // {
-    //   title: "Ngày kết thúc",
-    //   dataIndex: "closeday",
-    //   valueType: "date",
-    //   sorter: true,
-    //   hideInSearch: true,
-    //   render(dom, entity, index, action, schema) {
-    //     return (
-    //       <>
-    //         {entity.closeday
-    //           ? dayjs(entity.closeday).format("DD-MM-YYYY")
-    //           : null}
-    //       </>
-    //     );
-    //   }
-    // },
+    {
+      title: "Ngày kết thúc",
+      dataIndex: "closeday",
+      valueType: "date",
+      sorter: true,
+      hideInSearch: true,
+      render(dom, entity, index, action, schema) {
+        return (
+          <>
+            {entity.closeday
+              ? dayjs(entity.closeday).format("DD-MM-YYYY")
+              : null}
+          </>
+        );
+      }
+    },
     {
       title: "Ngày ra mắt",
       dataIndex: "opendayAtRange",
