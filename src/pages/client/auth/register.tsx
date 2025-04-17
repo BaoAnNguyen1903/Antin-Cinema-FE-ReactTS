@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { registerAPI } from "@/services/api";
+import bg from "assets/auth/login&register.jpg";
 
 type FieldType = {
   name: string;
@@ -34,7 +35,16 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="register-page">
+    <div
+      className="register-page"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        margin: 0
+      }}
+    >
       <main className="main">
         <div className="container">
           <section className="wrapper">

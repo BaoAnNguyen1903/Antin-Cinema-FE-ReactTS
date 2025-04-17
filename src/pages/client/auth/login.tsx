@@ -4,6 +4,7 @@ import "./login.scss";
 import { useState } from "react";
 import type { FormProps } from "antd";
 import { loginAPI } from "@/services/api";
+import bg from "assets/auth/login&register.jpg";
 import { useCurrentApp } from "@/components/context/app.context";
 
 type FieldType = {
@@ -41,12 +42,21 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-page">
+    <div
+      className="login-page"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        margin: 0
+      }}
+    >
       <main className="main">
         <div className="container">
           <section className="wrapper">
             <div className="heading">
-              <h2 className="text text-large">Đăng Nhập</h2>
+              <h2 className="text text-large">Đăng Nhập Antin Cinema</h2>
               <Divider />
             </div>
             <Form name="login-form" onFinish={onFinish} autoComplete="off">
