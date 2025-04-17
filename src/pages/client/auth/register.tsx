@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { registerAPI } from "@/services/api";
-import bg from "assets/auth/login&register.jpg";
+import bg from "assets/auth/login&register.jpeg";
 
 type FieldType = {
   name: string;

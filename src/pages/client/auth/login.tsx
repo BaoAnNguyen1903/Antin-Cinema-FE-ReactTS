@@ -4,7 +4,7 @@ import "./login.scss";
 import { useState } from "react";
 import type { FormProps } from "antd";
 import { loginAPI } from "@/services/api";
-import bg from "assets/auth/login&register.jpg";
+import bg from "assets/auth/login&register.jpeg";
 import { useCurrentApp } from "@/components/context/app.context";
 
 type FieldType = {
@@ -27,7 +27,7 @@ const LoginPage = () => {
       setIsAuthenticated(true);
       setUser(res.data.user);
       localStorage.setItem("access_token", res.data.access_token);
-      message.success("Đăng nhập tài khoản thành công!");
+      message.success("Welcome to Antin Cinema!");
       navigate("/");
     } else {
       notification.error({
