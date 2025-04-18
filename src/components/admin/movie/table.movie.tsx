@@ -26,7 +26,7 @@ type TSearch = {
 };
 
 const TableMovie = () => {
-  const actionRef = useRef<ActionType>();
+  const actionRef = useRef<ActionType>();  
   const [meta, setMeta] = useState({
     current: 1,
     pageSize: 10,

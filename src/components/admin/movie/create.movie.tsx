@@ -10,10 +10,11 @@ interface IProps {
 }
 
 type FieldType = {
-  name: string;
-  email: string;
-  username: string;
-  password: string;
+  movieName: string;
+  movieDescription: string;
+  movieDirector: string;
+  movieActor: string;
+  movieType: IMovieType;
 };
 
 const CreateMovie = (props: IProps) => {
