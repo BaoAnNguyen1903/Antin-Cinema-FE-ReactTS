@@ -9,8 +9,8 @@ import "./app.header.scss";
 import { Link } from "react-router-dom";
 import { useCurrentApp } from "components/context/app.context";
 import { logoutAPI } from "services/api";
-import ManageAccount from "../client/account";
 import { isMobile } from "react-device-detect";
+import ManageAccount from "@/pages/client/account";
 
 interface IProps {
   searchTerm: string;
@@ -21,14 +21,8 @@ const AppHeader = (props: IProps) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openManageAccount, setOpenManageAccount] = useState<boolean>(false);
 
-  const {
-    isAuthenticated,
-    user,
-    setUser,
-    setIsAuthenticated,
-    carts,
-    setCarts
-  } = useCurrentApp();
+  const { isAuthenticated, user, setUser, setIsAuthenticated } =
+    useCurrentApp();
 
   const navigate = useNavigate();
 
@@ -37,7 +31,6 @@ const AppHeader = (props: IProps) => {
     const res = await logoutAPI();
     if (res.data) {
       setUser(null);
-      setCarts([]);
       setIsAuthenticated(false);
       localStorage.removeItem("access_token");
       localStorage.removeItem("carts");
@@ -183,7 +176,7 @@ const AppHeader = (props: IProps) => {
                   <Dropdown menu={{ items }} trigger={["click"]}>
                     <Space>
                       <Avatar src={urlAvatar} />
-                      {user?.fullName}
+                      {user?.name}
                     </Space>
                   </Dropdown>
                 )}
