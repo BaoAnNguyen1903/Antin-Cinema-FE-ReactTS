@@ -61,6 +61,39 @@ export const createUserAPI = (
   });
 };
 
+export const createMovieAPI = (
+  movieName: string,
+  movieDescription: string,
+  movieDirector: string,
+  movieActor: string,
+  movieType: IMovieType,
+  movieTIme: string,
+  movieLanguage: IMovieLanguage,
+  movieRated: IMovieRated,
+  poster: string,
+  banner: string,
+  openday: Date,
+  closeday: Date,
+  movieStatus: number
+) => {
+  const urlBackend = "/api/v1/user/CreateMovie";
+  return axios.post<IBackendRes<IRegister>>(urlBackend, {
+    movieName,
+    movieDescription,
+    movieDirector,
+    movieActor,
+    movieType,
+    movieTIme,
+    movieLanguage,
+    movieRated,
+    poster,
+    banner,
+    openday,
+    closeday,
+    movieStatus
+  });
+};
+
 export const bulkCreateUserAPI = (
   hoidanit: {
     name: string;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { App, Divider, Form, Input, Modal } from "antd";
 import type { FormProps } from "antd";
-import { createUserAPI } from "@/services/api";
+import { createMovieAPI } from "@/services/api";
 
 interface IProps {
   openModalCreate: boolean;
@@ -15,6 +15,14 @@ type FieldType = {
   movieDirector: string;
   movieActor: string;
   movieType: IMovieType;
+  movieTIme: string;
+  movieLanguage: IMovieLanguage;
+  movieRated: IMovieRated;
+  poster: string;
+  banner: string;
+  openday: Date;
+  closeday: Date;
+  movieStatus: number;
 };
 
 const CreateMovie = (props: IProps) => {
@@ -26,9 +34,37 @@ const CreateMovie = (props: IProps) => {
   const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { name, username, password, email } = values;
+    const {
+      movieName,
+      movieDescription,
+      movieDirector,
+      movieActor,
+      movieType,
+      movieTIme,
+      movieLanguage,
+      movieRated,
+      poster,
+      banner,
+      openday,
+      closeday,
+      movieStatus
+    } = values;
     setIsSubmit(true);
-    const res = await createUserAPI(name, username, password, email);
+    const res = await createMovieAPI(
+      movieName,
+      movieDescription,
+      movieDirector,
+      movieActor,
+      movieType,
+      movieTIme,
+      movieLanguage,
+      movieRated,
+      poster,
+      banner,
+      openday,
+      closeday,
+      movieStatus
+    );
     if (res && res.data) {
       message.success("Tạo mới user thành công");
       form.resetFields();
