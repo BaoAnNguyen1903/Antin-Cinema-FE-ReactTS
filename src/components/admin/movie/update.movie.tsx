@@ -263,30 +263,29 @@ const UpdateMovie = (props: IProps) => {
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Email"
-            name="email"
+            label="Ngày ra mắt"
+            name="openday"
+            rules={[{ required: true, message: "Vui lòng nhập ngày ra mắt!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Ngày kết thúc"
+            name="closeday"
             rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không đúng định dạng!" }
+              { required: true, message: "Vui lòng nhập ngày kết thúc!" }
             ]}
           >
-            <Input disabled />
+            <Input />
           </Form.Item>
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Tài khoản"
-            name="username"
-            rules={[{ required: true, message: "Vui lòng nhập tài khoản!" }]}
-          >
-            <Input disabled />
-          </Form.Item>
-
-          <Form.Item<FieldType>
-            labelCol={{ span: 24 }}
-            label="Tích điểm"
-            name="points"
-            rules={[{ required: true, message: "Vui lòng nhập tích điểm!" }]}
+            label="Trạng thái"
+            name="movieStatus"
+            rules={[{ required: true, message: "Vui lòng nhập trạng thái!" }]}
           >
             <Input />
           </Form.Item>
