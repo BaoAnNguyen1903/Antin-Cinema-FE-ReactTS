@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { App, Divider, Form, Input, Modal } from "antd";
+import { App, Divider, Form, Input, Modal, Select } from "antd";
 import type { FormProps } from "antd";
 import { createMovieAPI } from "@/services/api";
 
@@ -15,7 +15,7 @@ type FieldType = {
   movieDirector: string;
   movieActor: string;
   movieType: IMovieType;
-  movieTIme: string;
+  movieTime: string;
   movieLanguage: IMovieLanguage;
   movieRated: IMovieRated;
   poster: string;
@@ -40,7 +40,7 @@ const CreateMovie = (props: IProps) => {
       movieDirector,
       movieActor,
       movieType,
-      movieTIme,
+      movieTime,
       movieLanguage,
       movieRated,
       poster,
@@ -56,7 +56,7 @@ const CreateMovie = (props: IProps) => {
       movieDirector,
       movieActor,
       movieType,
-      movieTIme,
+      movieTime,
       movieLanguage,
       movieRated,
       poster,
@@ -66,7 +66,7 @@ const CreateMovie = (props: IProps) => {
       movieStatus
     );
     if (res && res.data) {
-      message.success("Tạo mới user thành công");
+      message.success("Create movie successfully!");
       form.resetFields();
       setOpenModalCreate(false);
       refreshTable();
@@ -82,7 +82,7 @@ const CreateMovie = (props: IProps) => {
   return (
     <>
       <Modal
-        title="Thêm mới người dùng"
+        title="Thêm mới phim"
         open={openModalCreate}
         onOk={() => {
           form.submit();
@@ -106,33 +106,108 @@ const CreateMovie = (props: IProps) => {
         >
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Tên hiển thị"
-            name="name"
-            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+            label="Tên Phim"
+            name="movieName"
+            rules={[{ required: true, message: "Vui lòng nhập tên phim!" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Email"
-            name="email"
-            rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không đúng định dạng!" }
-            ]}
+            label="Miêu tả phim"
+            name="movieDescription"
           >
             <Input />
           </Form.Item>
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Tài khoản"
-            name="username"
-            rules={[
-              { required: true, message: "Vui lòng nhập tài khoản hiển thị!" }
-            ]}
+            label="Đạo diễn"
+            name="movieDirector"
           >
             <Input />
           </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Diễn viên"
+            name="movieActor"
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Thể loại"
+            name="movieType"
+          >
+            <Select placeholder="Chọn thể loại">
+              <Select.Option value="1">Hài</Select.Option>
+              <Select.Option value="2">Tình cảm</Select.Option>
+              <Select.Option value="3">Gia đình</Select.Option>
+              <Select.Option value="4">Hoạt hình</Select.Option>
+              <Select.Option value="5">Tâm lý</Select.Option>
+              <Select.Option value="6">Hành động</Select.Option>
+              <Select.Option value="7">Tội phạm</Select.Option>
+              <Select.Option value="8">Hồi hộp</Select.Option>
+              <Select.Option value="9">Kinh dị</Select.Option>
+              <Select.Option value="10">Bí ẩn</Select.Option>
+              <Select.Option value="11">Khoa học viễn tưởng</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Thời lượng"
+            name="movieTime"
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Ngôn ngữ"
+            name="movieLanguage"
+          >
+            <Select placeholder="Chọn ngôn ngữ">
+              <Select.Option value="1">Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value="2">
+                Tiếng Việt - Phụ đề Tiếng Anh
+              </Select.Option>
+              <Select.Option value="3">Phụ đề Tiếng Việt</Select.Option>
+              <Select.Option value="4">Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value="5">Lồng Tiếng Việt</Select.Option>
+              <Select.Option value="6">meo meo, gâu gâu</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Giới hạn độ tuổi"
+            name="movieRated"
+          >
+            <Select placeholder="Chọn giới hạn độ tuổi">
+              <Select.Option value="1">
+                P - PHIM ĐƯỢC PHÉP PHỔ BIẾN RỘNG RÃI ĐẾN MỌI ĐUỐI TƯỢNG
+              </Select.Option>
+              <Select.Option value="2">
+                K - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM DƯỚI 13 TUỔI VÀ CÓ NGƯỜI
+                BẢO HỘ ĐI KÈM
+              </Select.Option>
+              <Select.Option value="3">
+                T13 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 13 TUỔI
+              </Select.Option>
+              <Select.Option value="4">
+                T16 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 16 TUỔI
+              </Select.Option>
+              <Select.Option value="5">
+                T18 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 18 TUỔI
+              </Select.Option>
+              <Select.Option value="6">
+                C - PHIM KHÔNG ĐƯỢC PHÉP PHỔ BIẾN
+              </Select.Option>
+            </Select>
+          </Form.Item>
+
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
             label="Password"
