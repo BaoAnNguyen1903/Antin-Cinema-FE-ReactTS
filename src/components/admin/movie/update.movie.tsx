@@ -52,8 +52,8 @@ const UpdateMovie = (props: IProps) => {
         movieActor: dataUpdate.movieActor,
         movieType: dataUpdate.movieType?.movieTypeName,
         movieTime: dataUpdate.movieTime,
-        movieLanguage: dataUpdate.movieLanguage,
-        movieRated: dataUpdate.movieRated,
+        movieLanguage: dataUpdate.movieLanguage?.movieLanguageName,
+        movieRated: dataUpdate.movieRated?.movieRatedName,
         openday: dataUpdate.openday,
         closeday: dataUpdate.closeday,
         movieStatus: dataUpdate.movieStatus
@@ -200,6 +200,64 @@ const UpdateMovie = (props: IProps) => {
               <Select.Option value="9">Kinh dị</Select.Option>
               <Select.Option value="10">Bí ẩn</Select.Option>
               <Select.Option value="11">Khoa học viễn tưởng</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Thời lượng"
+            name="movieTime"
+            rules={[{ required: true, message: "Vui lòng nhập thời lượng!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Ngôn ngữ"
+            name="movieLanguage"
+            rules={[{ required: true, message: "Vui lòng chọn ngôn ngữ!" }]}
+          >
+            <Select placeholder="Chọn ngôn ngữ">
+              <Select.Option value="1">Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value="2">
+                Tiếng Việt - Phụ đề Tiếng Anh
+              </Select.Option>
+              <Select.Option value="3">Phụ đề Tiếng Việt</Select.Option>
+              <Select.Option value="4">Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value="5">Lồng Tiếng Việt</Select.Option>
+              <Select.Option value="6">meo meo, gâu gâu</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Giới hạn độ tuổi"
+            name="movieRated"
+            rules={[
+              { required: true, message: "Vui lòng chọn giới hạn độ tuổi!" }
+            ]}
+          >
+            <Select placeholder="Chọn giới hạn độ tuổi">
+              <Select.Option value="1">
+                P - PHIM ĐƯỢC PHÉP PHỔ BIẾN RỘNG RÃI ĐẾN MỌI ĐUỐI TƯỢNG
+              </Select.Option>
+              <Select.Option value="2">
+                K - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM DƯỚI 13 TUỔI VÀ CÓ NGƯỜI
+                BẢO HỘ ĐI KÈM
+              </Select.Option>
+              <Select.Option value="3">
+                T13 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 13 TUỔI
+              </Select.Option>
+              <Select.Option value="4">
+                T16 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 16 TUỔI
+              </Select.Option>
+              <Select.Option value="5">
+                T18 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 18 TUỔI
+              </Select.Option>
+              <Select.Option value="6">
+                C - PHIM KHÔNG ĐƯỢC PHÉP PHỔ BIẾN
+              </Select.Option>
             </Select>
           </Form.Item>
 
