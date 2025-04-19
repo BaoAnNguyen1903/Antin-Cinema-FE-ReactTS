@@ -52,6 +52,11 @@ const LayoutAdmin = () => {
       icon: <CalendarOutlined />
     },
     {
+      label: <Link to="/admin/booking">Manage Bookings</Link>,
+      key: "/admin/booking",
+      icon: <DollarCircleOutlined />
+    },
+    {
       label: <span>Manage Rooms</span>,
       key: "/admin/room",
       icon: <GoldOutlined />,
@@ -87,11 +92,6 @@ const LayoutAdmin = () => {
           icon: <BorderOutlined />
         }
       ]
-    },
-    {
-      label: <Link to="/admin/booking">Manage Bookings</Link>,
-      key: "/admin/booking",
-      icon: <DollarCircleOutlined />
     }
   ];
 
