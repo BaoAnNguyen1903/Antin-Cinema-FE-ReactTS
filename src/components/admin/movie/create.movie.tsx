@@ -147,6 +147,7 @@ const CreateMovie = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Thể loại"
             name="movieType"
+            rules={[{ required: true, message: "Vui lòng chọn thể loại!" }]}
           >
             <Select placeholder="Chọn thể loại">
               <Select.Option value="1">Hài</Select.Option>
@@ -167,6 +168,7 @@ const CreateMovie = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Thời lượng"
             name="movieTime"
+            rules={[{ required: true, message: "Vui lòng nhập thời lượng!" }]}
           >
             <Input />
           </Form.Item>
@@ -175,6 +177,7 @@ const CreateMovie = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Ngôn ngữ"
             name="movieLanguage"
+            rules={[{ required: true, message: "Vui lòng chọn ngôn ngữ!" }]}
           >
             <Select placeholder="Chọn ngôn ngữ">
               <Select.Option value="1">Phụ đề Tiếng Anh</Select.Option>
@@ -192,6 +195,9 @@ const CreateMovie = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Giới hạn độ tuổi"
             name="movieRated"
+            rules={[
+              { required: true, message: "Vui lòng chọn giới hạn độ tuổi!" }
+            ]}
           >
             <Select placeholder="Chọn giới hạn độ tuổi">
               <Select.Option value="1">
@@ -217,6 +223,7 @@ const CreateMovie = (props: IProps) => {
           </Form.Item>
 
           <Form.Item
+            labelCol={{ span: 24 }}
             label="Upload"
             valuePropName="fileList"
             getValueFromEvent={normFile}
@@ -239,11 +246,22 @@ const CreateMovie = (props: IProps) => {
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
+            label="Ngày ra mắt"
+            name="openday"
+            rules={[{ required: true, message: "Vui lòng nhập ngày ra mắt!" }]}
           >
-            <Input.Password />
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Ngày kết thúc"
+            name="closeday"
+            rules={[
+              { required: true, message: "Vui lòng nhập ngày kết thúc!" }
+            ]}
+          >
+            <Input />
           </Form.Item>
         </Form>
       </Modal>

@@ -6,7 +6,9 @@ import {
   MenuUnfoldOutlined,
   LineChartOutlined,
   PlayCircleOutlined,
-  CalendarOutlined
+  CalendarOutlined,
+  GoldOutlined,
+  BorderOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Space, Avatar } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -48,6 +50,43 @@ const LayoutAdmin = () => {
       label: <Link to="/admin/showtime">Manage Showtimes</Link>,
       key: "/admin/showtime",
       icon: <CalendarOutlined />
+    },
+    {
+      label: <span>Manage Rooms</span>,
+      key: "/admin/room",
+      icon: <GoldOutlined />,
+      children: [
+        {
+          label: <Link to="/admin/room">Room 1</Link>,
+          key: "/admin/room/1",
+          icon: <BorderOutlined />
+        },
+        {
+          label: <Link to="/admin/room">Room 2</Link>,
+          key: "/admin/room/2",
+          icon: <BorderOutlined />
+        },
+        {
+          label: <Link to="/admin/room">Room 3</Link>,
+          key: "/admin/room/3",
+          icon: <BorderOutlined />
+        },
+        {
+          label: <Link to="/admin/room">Room 4</Link>,
+          key: "/admin/room/4",
+          icon: <BorderOutlined />
+        },
+        {
+          label: <Link to="/admin/room">Room 5</Link>,
+          key: "/admin/room/5",
+          icon: <BorderOutlined />
+        },
+        {
+          label: <Link to="/admin/room">Room 6</Link>,
+          key: "/admin/room/6",
+          icon: <BorderOutlined />
+        }
+      ]
     },
     {
       label: <Link to="/admin/booking">Manage Bookings</Link>,

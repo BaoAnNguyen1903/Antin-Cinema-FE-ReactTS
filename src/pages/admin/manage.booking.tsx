@@ -1,9 +1,11 @@
-const ManageBookingPage = () => {
-    return (
-        <div>
-            manage booking page
-        </div>
-    )
-}
+import TableBooking from "@/components/admin/booking";
 
-export default ManageBookingPage
+const ManageBookingPage = () => {
+  return (
+    <div>
+      <TableBooking />
+    </div>
+  );
+};
+
+export default ManageBookingPage;
