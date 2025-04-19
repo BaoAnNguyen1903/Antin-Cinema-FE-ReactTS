@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { App, Divider, Form, Input, Modal, Select } from "antd";
 import type { FormProps } from "antd";
-import { updateUserAPI } from "@/services/api";
+import { updateMovieAPI } from "@/services/api";
 
 interface IProps {
   openModalUpdate: boolean;
@@ -12,16 +12,20 @@ interface IProps {
 }
 
 type FieldType = {
-  uid: number;
-  name: string;
-  dob: Date;
-  gender: string;
-  phone: string;
-  email: string;
-  username: string;
-  points: number;
-  status: number;
-  role: string;
+  mid: number;
+  movieName: string;
+  movieDescription: string;
+  movieDirector: string;
+  movieActor: string;
+  movieType: IMovieType;
+  movieTime: string;
+  movieLanguage: IMovieLanguage;
+  movieRated: IMovieRated;
+  poster: string;
+  banner: string;
+  openday: Date;
+  closeday: Date;
+  movieStatus: number;
 };
 
 const UpdateMovie = (props: IProps) => {
@@ -41,48 +45,58 @@ const UpdateMovie = (props: IProps) => {
   useEffect(() => {
     if (dataUpdate) {
       form.setFieldsValue({
-        uid: dataUpdate.uid,
-        name: dataUpdate.name,
-        dob: dataUpdate.dob,
-        gender: dataUpdate.gender,
-        phone: dataUpdate.phone,
-        email: dataUpdate.email,
-        username: dataUpdate.username,
-        points: dataUpdate.points,
-        status: dataUpdate.status,
-        role: dataUpdate.role
+        mid: dataUpdate.mid,
+        movieName: dataUpdate.movieName,
+        movieDescription: dataUpdate.movieDescription,
+        movieDirector: dataUpdate.movieDirector,
+        movieActor: dataUpdate.movieActor,
+        movieType: dataUpdate.movieType?.movieTypeName,
+        movieTime: dataUpdate.movieTime,
+        movieLanguage: dataUpdate.movieLanguage,
+        movieRated: dataUpdate.movieRated,
+        openday: dataUpdate.openday,
+        closeday: dataUpdate.closeday,
+        movieStatus: dataUpdate.movieStatus
       });
     }
   }, [dataUpdate]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     const {
-      uid,
-      name,
-      dob,
-      gender,
-      phone,
-      email,
-      username,
-      points,
-      status,
-      role
+      mid,
+      movieName,
+      movieDescription,
+      movieDirector,
+      movieActor,
+      movieType,
+      movieTime,
+      movieLanguage,
+      movieRated,
+      poster,
+      banner,
+      openday,
+      closeday,
+      movieStatus
     } = values;
     setIsSubmit(true);
-    const res = await updateUserAPI(
-      uid,
-      name,
-      dob,
-      gender,
-      phone,
-      email,
-      username,
-      points,
-      status,
-      role
+    const res = await updateMovieAPI(
+      mid,
+      movieName,
+      movieDescription,
+      movieDirector,
+      movieActor,
+      movieType,
+      movieTime,
+      movieLanguage,
+      movieRated,
+      poster,
+      banner,
+      openday,
+      closeday,
+      movieStatus
     );
     if (res && res.data) {
-      message.success("Cập nhật user thành công");
+      message.success("Update movie successfully!");
       form.resetFields();
       setOpenModalUpdate(false);
       setDataUpdate(null);
@@ -99,7 +113,7 @@ const UpdateMovie = (props: IProps) => {
   return (
     <>
       <Modal
-        title="Cập nhật người dùng"
+        title="Cập nhật phim"
         open={openModalUpdate}
         onOk={() => {
           form.submit();
@@ -125,53 +139,68 @@ const UpdateMovie = (props: IProps) => {
           <Form.Item<FieldType>
             hidden
             labelCol={{ span: 24 }}
-            label="uid"
-            name="uid"
-            rules={[{ required: true, message: "Vui lòng nhập uid!" }]}
+            label="mid"
+            name="mid"
+            rules={[{ required: true, message: "Vui lòng nhập mid!" }]}
           >
             <Input disabled />
           </Form.Item>
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Tên hiển thị"
-            name="name"
-            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+            label="Tên phim"
+            name="movieName"
+            rules={[{ required: true, message: "Vui lòng nhập tên phim!" }]}
           >
             <Input />
           </Form.Item>
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Ngày sinh"
-            name="dob"
-            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+            label="Miêu tả phim"
+            name="movieDescription"
+            rules={[{ required: true, message: "Vui lòng nhập miêu tả phim!" }]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Đạo diễn"
+            name="movieDirector"
+            rules={[{ required: true, message: "Vui lòng nhập đạo diễn!" }]}
           >
             <Input />
           </Form.Item>
 
           <Form.Item<FieldType>
             labelCol={{ span: 24 }}
-            label="Giới tính"
-            name="gender"
-            rules={[{ required: true, message: "Vui lòng chọn giới tính!" }]}
+            label="Diễn viên"
+            name="movieActor"
+            rules={[{ required: true, message: "Vui lòng nhập diễn viên!" }]}
           >
-            <Select placeholder="Chọn giới tính">
-              <Select.Option value="M">Nam</Select.Option>
-              <Select.Option value="F">Nữ</Select.Option>
-              <Select.Option value="O">Khác</Select.Option>
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            labelCol={{ span: 24 }}
+            label="Thể loại"
+            name="movieType"
+            rules={[{ required: true, message: "Vui lòng chọn thể loại!" }]}
+          >
+            <Select placeholder="Chọn thể loại">
+              <Select.Option value="1">Hài</Select.Option>
+              <Select.Option value="2">Tình cảm</Select.Option>
+              <Select.Option value="3">Gia đình</Select.Option>
+              <Select.Option value="4">Hoạt hình</Select.Option>
+              <Select.Option value="5">Tâm lý</Select.Option>
+              <Select.Option value="6">Hành động</Select.Option>
+              <Select.Option value="7">Tội phạm</Select.Option>
+              <Select.Option value="8">Hồi hộp</Select.Option>
+              <Select.Option value="9">Kinh dị</Select.Option>
+              <Select.Option value="10">Bí ẩn</Select.Option>
+              <Select.Option value="11">Khoa học viễn tưởng</Select.Option>
             </Select>
-          </Form.Item>
-
-          <Form.Item<FieldType>
-            labelCol={{ span: 24 }}
-            label="Số điện thoại"
-            name="phone"
-            rules={[
-              { required: true, message: "Vui lòng nhập số điện thoại!" }
-            ]}
-          >
-            <Input />
           </Form.Item>
 
           <Form.Item<FieldType>

@@ -134,6 +134,41 @@ export const updateUserAPI = (
   });
 };
 
+export const updateMovieAPI = (
+  mid: number,
+  movieName: string,
+  movieDescription: string,
+  movieDirector: string,
+  movieActor: string,
+  movieType: IMovieType,
+  movieTime: string,
+  movieLanguage: IMovieLanguage,
+  movieRated: IMovieRated,
+  poster: string,
+  banner: string,
+  openday: Date,
+  closeday: Date,
+  movieStatus: number
+) => {
+  const urlBackend = "/api/v1/user/UpdateUser";
+  return axios.put<IBackendRes<IRegister>>(urlBackend, {
+    mid,
+    movieName,
+    movieDescription,
+    movieDirector,
+    movieActor,
+    movieType,
+    movieTime,
+    movieLanguage,
+    movieRated,
+    poster,
+    banner,
+    openday,
+    closeday,
+    movieStatus
+  });
+};
+
 export const deleteUserAPI = (uid: number) => {
   const urlBackend = `/api/v1/user/${uid}`;
   return axios.delete<IBackendRes<IRegister>>(urlBackend);
