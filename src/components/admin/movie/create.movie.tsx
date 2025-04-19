@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { App, Divider, Form, Input, Modal, Select } from "antd";
+import { App, Divider, Form, Input, Modal, Select, Upload } from "antd";
 import type { FormProps } from "antd";
 import { createMovieAPI } from "@/services/api";
+import { PlusOutlined } from "@ant-design/icons";
 
 interface IProps {
   openModalCreate: boolean;
@@ -32,6 +33,13 @@ const CreateMovie = (props: IProps) => {
 
   // https://ant.design/components/form#components-form-demo-control-hooks
   const [form] = Form.useForm();
+
+  const normFile = (e: any) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     const {
@@ -206,6 +214,27 @@ const CreateMovie = (props: IProps) => {
                 C - PHIM KHÔNG ĐƯỢC PHÉP PHỔ BIẾN
               </Select.Option>
             </Select>
+          </Form.Item>
+
+          <Form.Item
+            label="Upload"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload action="/upload.do" listType="picture-card">
+              <button
+                style={{
+                  color: "inherit",
+                  cursor: "inherit",
+                  border: 0,
+                  background: "none"
+                }}
+                type="button"
+              >
+                <PlusOutlined />
+                <div style={{ marginTop: 8 }}>Upload</div>
+              </button>
+            </Upload>
           </Form.Item>
 
           <Form.Item<FieldType>
