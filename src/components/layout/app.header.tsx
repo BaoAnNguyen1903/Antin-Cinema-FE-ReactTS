@@ -60,7 +60,7 @@ const AppHeader = (props: IProps) => {
       key: "logout"
     }
   ];
-  if (user?.role === "ADMIN") {
+  if (user?.role === "A") {
     items.unshift({
       label: <Link to="/admin">Trang quản trị</Link>,
       key: "admin"
@@ -87,30 +87,42 @@ const AppHeader = (props: IProps) => {
 
             <div className="page-header__logo">
               <span className="logo">
-                <span onClick={() => navigate("/")}>
-                  {" "}
-                  <FaReact className="rotate icon-react" />
-                  Antin Cinema
-                </span>
+                <span onClick={() => navigate("/")}> Antin Cinema</span>
               </span>
 
-              <ul className="navigation">
-                <li>
-                  <Link to="/lich-chieu-phim">LỊCH CHIẾU</Link>
-                </li>
-                <li>
-                  <Link to="/movie">PHIM</Link>
-                </li>
-                <li>
-                  <Link to="/uu-dai">ƯU ĐÃI</Link>
-                </li>
-                <li>
-                  <Link to="/tin-tuc-phim">TIN TỨC PHIM</Link>
-                </li>
-                <li>
-                  <Link to="/member">THÀNH VIÊN</Link>
-                </li>
-              </ul>
+              <span className="page-header__menu">
+                <ul>
+                  <li
+                    className={
+                      location.pathname === "/lich-chieu-phim" ? "active" : ""
+                    }
+                  >
+                    <Link to="/lich-chieu-phim">LỊCH CHIẾU</Link>
+                  </li>
+                  <li
+                    className={location.pathname === "/movie" ? "active" : ""}
+                  >
+                    <Link to="/movie">PHIM</Link>
+                  </li>
+                  <li
+                    className={location.pathname === "/uu-dai" ? "active" : ""}
+                  >
+                    <Link to="/uu-dai">ƯU ĐÃI</Link>
+                  </li>
+                  <li
+                    className={
+                      location.pathname === "/tin-tuc-phim" ? "active" : ""
+                    }
+                  >
+                    <Link to="/tin-tuc-phim">TIN TỨC PHIM</Link>
+                  </li>
+                  <li
+                    className={location.pathname === "/member" ? "active" : ""}
+                  >
+                    <Link to="/member">THÀNH VIÊN</Link>
+                  </li>
+                </ul>
+              </span>
             </div>
           </div>
 
@@ -121,7 +133,7 @@ const AppHeader = (props: IProps) => {
               </li>
               <li className="navigation__item mobile">
                 {!isAuthenticated ? (
-                  <span onClick={() => navigate("/login")}> Tài Khoản</span>
+                  <span onClick={() => navigate("/login")}>Tài Khoản</span>
                 ) : (
                   <Dropdown menu={{ items }} trigger={["click"]}>
                     <Space>

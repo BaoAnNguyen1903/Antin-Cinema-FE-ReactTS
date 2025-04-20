@@ -36,58 +36,9 @@
         }
 
         .logo {
-            color: #61dafb;
+            color:red;
             cursor: pointer;
             display: block;
-
-            .icon-react {
-                font-size: 30px;
-                position: relative;
-                top: 8px;
-                margin-right: 5px;
-
-
-                &.rotate {
-                    -webkit-animation: spin 10s linear infinite;
-                    -moz-animation: spin 10s linear infinite;
-                    animation: spin 10s linear infinite;
-
-                    @-moz-keyframes spin {
-                        100% {
-                            -moz-transform: rotate(360deg);
-                        }
-                    }
-
-                    @-webkit-keyframes spin {
-                        100% {
-                            -webkit-transform: rotate(360deg);
-                        }
-                    }
-
-                    @keyframes spin {
-                        100% {
-                            -webkit-transform: rotate(360deg);
-                            transform: rotate(360deg);
-                        }
-                    }
-                }
-            }
-
-            .icon-search {
-                position: relative;
-                left: 35px;
-            }
-
-
-        }
-
-        .input-search {
-            height: 25px;
-            outline: none;
-            padding: 5px 30px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            flex: 1;
         }
     }
 
@@ -107,13 +58,6 @@
             }
 
 
-        }
-
-        .icon-cart {
-            font-size: 20px;
-            top: 5px;
-            position: relative;
-            color: #61dafb;
         }
     }
 
