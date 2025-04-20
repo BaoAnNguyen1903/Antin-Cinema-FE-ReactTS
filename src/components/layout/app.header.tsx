@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaReact } from "react-icons/fa";
-import { FiShoppingCart } from "react-icons/fi";
 import { VscSearchFuzzy } from "react-icons/vsc";
 import { Divider, Badge, Drawer, Avatar, Popover, Empty } from "antd";
 import { Dropdown, Space } from "antd";
@@ -33,7 +32,6 @@ const AppHeader = (props: IProps) => {
       setUser(null);
       setIsAuthenticated(false);
       localStorage.removeItem("access_token");
-      localStorage.removeItem("carts");
     }
   };
 
@@ -73,40 +71,6 @@ const AppHeader = (props: IProps) => {
     user?.avatar
   }`;
 
-  const contentPopover = () => {
-    return (
-      <div className="pop-cart-body">
-        <div className="pop-cart-content">
-          {carts?.map((book, index) => {
-            return (
-              <div className="book" key={`book-${index}`}>
-                <img
-                  src={`${import.meta.env.VITE_BACKEND_URL}/images/book/${
-                    book?.detail?.thumbnail
-                  }`}
-                />
-                <div>{book?.detail?.mainText}</div>
-                <div className="price">
-                  {new Intl.NumberFormat("vi-VN", {
-                    style: "currency",
-                    currency: "VND"
-                  }).format(book?.detail?.price ?? 0)}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        {carts.length > 0 ? (
-          <div className="pop-cart-footer">
-            <button onClick={() => navigate("/order")}>Xem giỏ hàng</button>
-          </div>
-        ) : (
-          <Empty description="Không có sản phẩm trong giỏ hàng" />
-        )}
-      </div>
-    );
-  };
-
   return (
     <>
       <div className="header-container">
@@ -125,7 +89,7 @@ const AppHeader = (props: IProps) => {
                 <span onClick={() => navigate("/")}>
                   {" "}
                   <FaReact className="rotate icon-react" />
-                  Antin Book Store
+                  Antin Cinema
                 </span>
 
                 <VscSearchFuzzy className="icon-search" />
@@ -141,31 +105,6 @@ const AppHeader = (props: IProps) => {
           </div>
           <nav className="page-header__bottom">
             <ul id="navigation" className="navigation">
-              <li className="navigation__item">
-                {!isMobile ? (
-                  <Popover
-                    className="popover-carts"
-                    placement="topRight"
-                    rootClassName="popover-carts"
-                    title={"Sản phẩm mới thêm"}
-                    content={contentPopover}
-                    arrow={true}
-                  >
-                    <Badge count={carts?.length ?? 0} size={"small"} showZero>
-                      <FiShoppingCart className="icon-cart" />
-                    </Badge>
-                  </Popover>
-                ) : (
-                  <Badge
-                    count={carts?.length ?? 0}
-                    size={"small"}
-                    showZero
-                    onClick={() => navigate("/order")}
-                  >
-                    <FiShoppingCart className="icon-cart" />
-                  </Badge>
-                )}
-              </li>
               <li className="navigation__item mobile">
                 <Divider type="vertical" />
               </li>
