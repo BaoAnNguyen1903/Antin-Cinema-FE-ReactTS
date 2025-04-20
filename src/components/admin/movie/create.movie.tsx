@@ -250,7 +250,7 @@ const CreateMovie = (props: IProps) => {
             name="openday"
             rules={[{ required: true, message: "Vui lòng nhập ngày ra mắt!" }]}
           >
-            <Input />
+            
           </Form.Item>
 
           <Form.Item<FieldType>

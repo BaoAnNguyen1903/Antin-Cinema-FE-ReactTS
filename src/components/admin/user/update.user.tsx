@@ -147,7 +147,7 @@ const UpdateUser = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Ngày sinh"
             name="dob"
-            rules={[{ required: true, message: "Vui lòng nhập ngày sinh!" }]}
+            rules={[{ required: true, message: "Vui lòng chọn ngày sinh!" }]}
           >
             <DatePicker format={FORMATE_DATE_VN} style={{ width: "100%" }} />
           </Form.Item>
