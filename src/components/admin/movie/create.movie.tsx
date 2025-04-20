@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { App, Divider, Form, Input, Modal, Select, Upload } from "antd";
+import {
+  App,
+  DatePicker,
+  Divider,
+  Form,
+  Input,
+  Modal,
+  Select,
+  Upload
+} from "antd";
 import type { FormProps } from "antd";
 import { createMovieAPI } from "@/services/api";
 import { PlusOutlined } from "@ant-design/icons";
+import { FORMATE_DATE_VN } from "@/services/helper";
 
 interface IProps {
   openModalCreate: boolean;
@@ -248,9 +258,9 @@ const CreateMovie = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Ngày ra mắt"
             name="openday"
-            rules={[{ required: true, message: "Vui lòng nhập ngày ra mắt!" }]}
+            rules={[{ required: true, message: "Vui lòng chọn ngày ra mắt!" }]}
           >
-            
+            <DatePicker format={FORMATE_DATE_VN} style={{ width: "100%" }} />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -258,10 +268,10 @@ const CreateMovie = (props: IProps) => {
             label="Ngày kết thúc"
             name="closeday"
             rules={[
-              { required: true, message: "Vui lòng nhập ngày kết thúc!" }
+              { required: true, message: "Vui lòng chọn ngày kết thúc!" }
             ]}
           >
-            <Input />
+            <DatePicker format={FORMATE_DATE_VN} style={{ width: "100%" }} />
           </Form.Item>
         </Form>
       </Modal>
