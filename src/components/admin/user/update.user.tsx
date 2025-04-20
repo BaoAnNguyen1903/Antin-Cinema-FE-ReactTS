@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { App, Divider, Form, Input, InputNumber, Modal, Select } from "antd";
-import type { FormProps } from "antd";
+import { FormProps, DatePicker } from "antd";
 import { updateUserAPI } from "@/services/api";
+import { FORMATE_DATE_VN } from "@/services/helper";
+import dayjs from "dayjs";
 
 interface IProps {
   openModalUpdate: boolean;
@@ -43,7 +45,7 @@ const UpdateUser = (props: IProps) => {
       form.setFieldsValue({
         uid: dataUpdate.uid,
         name: dataUpdate.name,
-        dob: dataUpdate.dob,
+        dob: dataUpdate.dob ? dayjs(dataUpdate.dob) : null,
         gender: dataUpdate.gender,
         phone: dataUpdate.phone,
         email: dataUpdate.email,
@@ -145,9 +147,9 @@ const UpdateUser = (props: IProps) => {
             labelCol={{ span: 24 }}
             label="Ngày sinh"
             name="dob"
-            rules={[{ required: true, message: "Vui lòng nhập tên hiển thị!" }]}
+            rules={[{ required: true, message: "Vui lòng nhập ngày sinh!" }]}
           >
-            <Input />
+            <DatePicker format={FORMATE_DATE_VN} style={{ width: "100%" }} />
           </Form.Item>
 
           <Form.Item<FieldType>
