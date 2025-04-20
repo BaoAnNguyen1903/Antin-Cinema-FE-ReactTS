@@ -84,6 +84,7 @@ const AppHeader = (props: IProps) => {
             >
               ☰
             </div>
+
             <div className="page-header__logo">
               <span className="logo">
                 <span onClick={() => navigate("/")}>
@@ -91,18 +92,28 @@ const AppHeader = (props: IProps) => {
                   <FaReact className="rotate icon-react" />
                   Antin Cinema
                 </span>
-
-                <VscSearchFuzzy className="icon-search" />
               </span>
-              <input
-                className="input-search"
-                type={"text"}
-                placeholder="Bạn tìm gì hôm nay"
-                value={props.searchTerm}
-                onChange={(e) => props.setSearchTerm(e.target.value)}
-              />
+
+              <ul className="navigation">
+                <li>
+                  <Link to="/lich-chieu-phim">LỊCH CHIẾU</Link>
+                </li>
+                <li>
+                  <Link to="/movie">PHIM</Link>
+                </li>
+                <li>
+                  <Link to="/uu-dai">ƯU ĐÃI</Link>
+                </li>
+                <li>
+                  <Link to="/tin-tuc-phim">TIN TỨC PHIM</Link>
+                </li>
+                <li>
+                  <Link to="/member">THÀNH VIÊN</Link>
+                </li>
+              </ul>
             </div>
           </div>
+
           <nav className="page-header__bottom">
             <ul id="navigation" className="navigation">
               <li className="navigation__item mobile">
