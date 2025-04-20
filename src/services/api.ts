@@ -76,7 +76,7 @@ export const createMovieAPI = (
   closeday: Date,
   movieStatus: number
 ) => {
-  const urlBackend = "/api/v1/user/CreateMovie";
+  const urlBackend = "/api/v1/movie/CreateMovie";
   return axios.post<IBackendRes<IRegister>>(urlBackend, {
     movieName,
     movieDescription,
