@@ -150,7 +150,7 @@ export const updateMovieAPI = (
   closeday: Date,
   movieStatus: number
 ) => {
-  const urlBackend = "/api/v1/user/UpdateUser";
+  const urlBackend = "/api/v1/movie/UpdateUser";
   return axios.put<IBackendRes<IRegister>>(urlBackend, {
     mid,
     movieName,
