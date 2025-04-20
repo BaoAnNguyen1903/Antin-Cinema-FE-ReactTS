@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import type { FormProps } from "antd";
 
 type FieldType = {
-  email: string;
+  username: string;
   oldpass: string;
   newpass: string;
 };
@@ -18,14 +18,14 @@ const ChangePassword = () => {
 
   useEffect(() => {
     if (user) {
-      form.setFieldValue("email", user.email);
+      form.setFieldValue("username", user.username);
     }
   }, [user]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { email, oldpass, newpass } = values;
+    const { username, oldpass, newpass } = values;
     setIsSubmit(true);
-    const res = await updateUserPasswordAPI(email, oldpass, newpass);
+    const res = await updateUserPasswordAPI(username, oldpass, newpass);
     if (res && res.data) {
       message.success("Cập nhật mật khẩu thành công");
       form.setFieldValue("oldpass", "");
@@ -53,8 +53,8 @@ const ChangePassword = () => {
           >
             <Form.Item<FieldType>
               labelCol={{ span: 24 }} //whole column
-              label="Email"
-              name="email"
+              label="Tài khoản"
+              name="username"
               rules={[
                 { required: true, message: "Email không được để trống!" }
               ]}
