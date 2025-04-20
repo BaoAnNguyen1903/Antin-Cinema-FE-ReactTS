@@ -1,15 +1,15 @@
 .header-container {
     .page-header {
         display: flex;
-        user-select: none;
+        user-select: none; // không cho phép người dùng bôi đen chữ
         -moz-user-select: none;
         -webkit-user-select: none;
         height: 55px;
         color: #808089;
         width: 100%;
-        max-width: 1440px;
-        margin: 0 auto;
-        line-height: 55px;
+        max-width: 1440px; // giới hạn chiều rộng tối đa, thường để căn giữa trên màn hình lớn.
+        margin: 0 auto; // căn giữa theo chiều ngang
+        line-height: 55px; // căn dòng ngang bằng chiều cao để căn giữa văn bản theo chiều dọc.
 
 
         &__top {
@@ -23,7 +23,7 @@
         }
 
         &__toggle {
-            display: none;
+            display: none; // Ban đầu ẩn toggle menu, nhưng sẽ hiện khi màn hình nhỏ (dùng trong responsive).
         }
 
         .page-header__top {
