@@ -210,3 +210,16 @@ export const uploadFileAPI = (fileImg: any, folder: string) => {
     }
   });
 };
+
+export const updateUserPasswordAPI = (
+  username: string,
+  oldpass: string,
+  newpass: string
+) => {
+  const urlBackend = "/api/v1/user/change-password";
+  return axios.post<IBackendRes<IRegister>>(urlBackend, {
+    username,
+    oldpass,
+    newpass
+  });
+};

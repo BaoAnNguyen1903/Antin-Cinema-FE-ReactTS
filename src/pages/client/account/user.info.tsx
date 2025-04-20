@@ -159,7 +159,29 @@ const UserInfo = () => {
             >
               <Input />
             </Form.Item>
-            
+
+            <Form.Item<FieldType>
+              labelCol={{ span: 24 }}
+              label="Ngày sinh"
+              name="dob"
+              rules={[
+                { required: true, message: "Ngày sinh không được để trống!" }
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              labelCol={{ span: 24 }}
+              label="Giới tính"
+              name="gender"
+              rules={[
+                { required: true, message: "Giới tính không được để trống!" }
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
             <Form.Item<FieldType>
               labelCol={{ span: 24 }}
               label="Số điện thoại"
