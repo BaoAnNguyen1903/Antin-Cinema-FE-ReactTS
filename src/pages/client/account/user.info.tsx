@@ -9,10 +9,12 @@ import { updateUserInfoAPI, uploadFileAPI } from "@/services/api";
 import type { UploadFile } from "antd";
 
 type FieldType = {
-  _id: string;
-  email: string;
-  fullName: string;
+  uid: number;
+  name: string;
+  dob: Date;
+  gender: string;
   phone: string;
+  avatar: string;
 };
 
 const UserInfo = () => {
@@ -30,10 +32,12 @@ const UserInfo = () => {
   useEffect(() => {
     if (user) {
       form.setFieldsValue({
-        _id: user.id,
-        email: user.email,
+        uid: user.uid,
+        name: user.name,
+        dob: user.dob,
+        gender: user.gender,
         phone: user.phone,
-        fullName: user.fullName
+        avatar: user.avatar
       });
     }
   }, [user]);
@@ -71,16 +75,18 @@ const UserInfo = () => {
   };
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const { fullName, phone, _id } = values;
+    const { uid, name, dob, gender, phone, avatar } = values;
     setIsSubmit(true);
-    const res = await updateUserInfoAPI(_id, userAvatar, fullName, phone);
+    const res = await updateUserInfoAPI(uid, name, dob, gender, phone, avatar);
 
     if (res && res.data) {
       //update react context
       setUser({
         ...user!,
         avatar: userAvatar,
-        fullName,
+        name,
+        dob,
+        gender,
         phone
       });
       message.success("Cập nhật thông tin user thành công");
@@ -126,13 +132,13 @@ const UserInfo = () => {
             <Form.Item<FieldType>
               hidden
               labelCol={{ span: 24 }}
-              label="_id"
-              name="_id"
+              label="uid"
+              name="uid"
             >
               <Input disabled hidden />
             </Form.Item>
 
-            <Form.Item<FieldType>
+            {/* <Form.Item<FieldType>
               labelCol={{ span: 24 }}
               label="Email"
               name="email"
@@ -141,17 +147,19 @@ const UserInfo = () => {
               ]}
             >
               <Input disabled />
-            </Form.Item>
+            </Form.Item> */}
+
             <Form.Item<FieldType>
               labelCol={{ span: 24 }}
               label="Tên hiển thị"
-              name="fullName"
+              name="name"
               rules={[
                 { required: true, message: "Tên hiển thị không được để trống!" }
               ]}
             >
               <Input />
             </Form.Item>
+            
             <Form.Item<FieldType>
               labelCol={{ span: 24 }}
               label="Số điện thoại"
