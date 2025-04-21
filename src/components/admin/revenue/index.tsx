@@ -56,6 +56,7 @@ const RevenueDashboard = () => {
           />
         </Card>
       </Col>
+      
       <Col span={24}>
         <RcResizeObserver
           key="resize-observer"

@@ -56,8 +56,7 @@ const TableMovie = () => {
       refreshTable();
     } else {
       notification.error({
-        message: "Đã có lỗi xảy ra",
-        description: res.message
+        message: "Admin khong cho xoa ^^"
       });
     }
     setIsDeleteMovie(false);

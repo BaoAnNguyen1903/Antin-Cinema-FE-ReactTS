@@ -16,10 +16,12 @@ interface IProps {
 }
 
 interface IDataImport {
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
+  movieName: string;
+  movieDescription: string;
+  movieDirector: string;
+  movieActor: string;
+  movieType: IMovieType;
+  movieTime: string;
 }
 
 const ImportMovie = (props: IProps) => {

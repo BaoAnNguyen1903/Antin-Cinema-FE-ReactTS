@@ -80,6 +80,7 @@ const UpdateMovie = (props: IProps) => {
       closeday,
       movieStatus
     } = values;
+
     setIsSubmit(true);
     const res = await updateMovieAPI(
       mid,
@@ -191,17 +192,17 @@ const UpdateMovie = (props: IProps) => {
             rules={[{ required: true, message: "Vui lòng chọn thể loại!" }]}
           >
             <Select placeholder="Chọn thể loại">
-              <Select.Option value="1">Hài</Select.Option>
-              <Select.Option value="2">Tình cảm</Select.Option>
-              <Select.Option value="3">Gia đình</Select.Option>
-              <Select.Option value="4">Hoạt hình</Select.Option>
-              <Select.Option value="5">Tâm lý</Select.Option>
-              <Select.Option value="6">Hành động</Select.Option>
-              <Select.Option value="7">Tội phạm</Select.Option>
-              <Select.Option value="8">Hồi hộp</Select.Option>
-              <Select.Option value="9">Kinh dị</Select.Option>
-              <Select.Option value="10">Bí ẩn</Select.Option>
-              <Select.Option value="11">Khoa học viễn tưởng</Select.Option>
+              <Select.Option value={1}>Hài</Select.Option>
+              <Select.Option value={2}>Tình cảm</Select.Option>
+              <Select.Option value={3}>Gia đình</Select.Option>
+              <Select.Option value={4}>Hoạt hình</Select.Option>
+              <Select.Option value={5}>Tâm lý</Select.Option>
+              <Select.Option value={6}>Hành động</Select.Option>
+              <Select.Option value={7}>Tội phạm</Select.Option>
+              <Select.Option value={8}>Hồi hộp</Select.Option>
+              <Select.Option value={9}>Kinh dị</Select.Option>
+              <Select.Option value={10}>Bí ẩn</Select.Option>
+              <Select.Option value={11}>Khoa học viễn tưởng</Select.Option>
             </Select>
           </Form.Item>
 
@@ -221,14 +222,14 @@ const UpdateMovie = (props: IProps) => {
             rules={[{ required: true, message: "Vui lòng chọn ngôn ngữ!" }]}
           >
             <Select placeholder="Chọn ngôn ngữ">
-              <Select.Option value="1">Phụ đề Tiếng Anh</Select.Option>
-              <Select.Option value="2">
+              <Select.Option value={1}>Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value={2}>
                 Tiếng Việt - Phụ đề Tiếng Anh
               </Select.Option>
-              <Select.Option value="3">Phụ đề Tiếng Việt</Select.Option>
-              <Select.Option value="4">Phụ đề Tiếng Anh</Select.Option>
-              <Select.Option value="5">Lồng Tiếng Việt</Select.Option>
-              <Select.Option value="6">meo meo, gâu gâu</Select.Option>
+              <Select.Option value={3}>Phụ đề Tiếng Việt</Select.Option>
+              <Select.Option value={4}>Phụ đề Tiếng Anh</Select.Option>
+              <Select.Option value={5}>Lồng Tiếng Việt</Select.Option>
+              <Select.Option value={6}>meo meo, gâu gâu</Select.Option>
             </Select>
           </Form.Item>
 
@@ -241,23 +242,23 @@ const UpdateMovie = (props: IProps) => {
             ]}
           >
             <Select placeholder="Chọn giới hạn độ tuổi">
-              <Select.Option value="1">
+              <Select.Option value={1}>
                 P - PHIM ĐƯỢC PHÉP PHỔ BIẾN RỘNG RÃI ĐẾN MỌI ĐUỐI TƯỢNG
               </Select.Option>
-              <Select.Option value="2">
+              <Select.Option value={2}>
                 K - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM DƯỚI 13 TUỔI VÀ CÓ NGƯỜI
                 BẢO HỘ ĐI KÈM
               </Select.Option>
-              <Select.Option value="3">
+              <Select.Option value={3}>
                 T13 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 13 TUỔI
               </Select.Option>
-              <Select.Option value="4">
+              <Select.Option value={4}>
                 T16 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 16 TUỔI
               </Select.Option>
-              <Select.Option value="5">
+              <Select.Option value={5}>
                 T18 - PHIM CẤM PHỔ BIẾN ĐẾN KHÁN GIẢ DƯỚI 18 TUỔI
               </Select.Option>
-              <Select.Option value="6">
+              <Select.Option value={6}>
                 C - PHIM KHÔNG ĐƯỢC PHÉP PHỔ BIẾN
               </Select.Option>
             </Select>
