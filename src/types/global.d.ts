@@ -117,4 +117,11 @@ declare global {
   }
 
   interface IBookingTable extends IHistory {}
+
+  interface IGuest {
+    kid: string;
+    name: string;
+    email: string;
+    phone: string;
+  }
 }
