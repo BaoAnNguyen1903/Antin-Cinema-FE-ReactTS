@@ -42,7 +42,8 @@ const TableGuest = () => {
     },
     {
       title: "Email",
-      dataIndex: "email"
+      dataIndex: "email",
+      copyable: true
     }
   ];
 
