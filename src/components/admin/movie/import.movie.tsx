@@ -104,16 +104,22 @@ const ImportMovie = (props: IProps) => {
   const handleImport = async () => {
     setIsSubmit(true);
     const dataSubmit = dataImport.map((item) => ({
-      name: item.name,
-      username: item.username,
-      email: item.email,
-      phone: item.phone,
+      movieName: item.movieName,
+      movieDescription: item.movieDescription,
+      movieDirector: item.movieDirector,
+      movieActor: item.movieActor,
+      movieType: item.movieType,
+      movieTime: item.movieTime,
+      movieLanguage: item.movieLanguage,
+      movieRated: item.movieRated,
+      openday: item.openday,
+      closedate: item.closedate,
       password: import.meta.env.VITE_USER_CREATE_DEFAULT_PASSWORD
     }));
-    const res = await bulkCreateUserAPI(dataSubmit);
+    const res = await bulkCreateMovieAPI(dataSubmit);
     if (res.data) {
       notification.success({
-        message: "Bulk Create Users",
+        message: "Bulk Create Movies",
         description: `Success = ${res.data.countSuccess}. Error = ${res.data.countError}`
       });
     }
@@ -126,7 +132,7 @@ const ImportMovie = (props: IProps) => {
   return (
     <>
       <Modal
-        title="Import data user"
+        title="Import data movie"
         width={"50vw"}
         open={openModalImport}
         onOk={() => handleImport()}
@@ -168,10 +174,16 @@ const ImportMovie = (props: IProps) => {
             title={() => <span>Dữ liệu upload:</span>}
             dataSource={dataImport}
             columns={[
-              { dataIndex: "name", title: "Tên hiển thị" },
-              { dataIndex: "username", title: "Tài khoản" },
-              { dataIndex: "email", title: "Email" },
-              { dataIndex: "phone", title: "Số điện thoại" }
+              { dataIndex: "movieName", title: "Tên phim" },
+              { dataIndex: "movieDescription", title: "Mô tả phim" },
+              { dataIndex: "movieDirector", title: "Đạo diễn" },
+              { dataIndex: "movieActor", title: "Diễn viên" },
+              { dataIndex: "movieType", title: "Thể loại" },
+              { dataIndex: "movieTime", title: "Thời lượng" },
+              { dataIndex: "movieLanguage", title: "Ngôn ngữ" },
+              { dataIndex: "movieRated", title: "Giới hạn độ tuổi" },
+              { dataIndex: "openday", title: "Ngày ra mắt" },
+              { dataIndex: "closeday", title: "Ngày kết thúc" }
             ]}
           />
         </div>
