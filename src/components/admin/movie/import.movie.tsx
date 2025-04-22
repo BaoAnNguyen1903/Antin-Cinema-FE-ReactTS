@@ -5,7 +5,7 @@ import type { UploadProps } from "antd";
 import { useState } from "react";
 import Exceljs from "exceljs";
 import { Buffer } from "buffer";
-import { bulkCreateUserAPI } from "@/services/api";
+import { bulkCreateMovieAPI } from "@/services/api";
 import templateFile from "assets/template/user.xlsx?url";
 const { Dragger } = Upload;
 
