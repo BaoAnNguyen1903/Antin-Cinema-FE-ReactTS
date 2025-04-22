@@ -17,12 +17,14 @@ import { Link } from "react-router-dom";
 import { useCurrentApp } from "../context/app.context";
 import type { MenuProps } from "antd";
 import { logoutAPI } from "@/services/api";
+import ManageAccount from "@/pages/client/account";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const { Content, Sider } = Layout;
 
 const LayoutAdmin = () => {
+  const [openManageAccount, setOpenManageAccount] = useState<boolean>(false);
   const [collapsed, setCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
   const { user, setUser, setIsAuthenticated, isAuthenticated } =
@@ -109,7 +111,6 @@ const LayoutAdmin = () => {
   }, [location]);
 
   const handleLogout = async () => {
-    //todo
     const res = await logoutAPI();
     if (res.data) {
       setUser(null);
@@ -121,12 +122,11 @@ const LayoutAdmin = () => {
 
   const itemsDropdown = [
     {
-      label: <Link to={"/"}>Trang chủ</Link>,
-      key: "home"
-    },
-    {
       label: (
-        <label style={{ cursor: "pointer" }} onClick={() => alert("me")}>
+        <label
+          style={{ cursor: "pointer" }}
+          onClick={() => setOpenManageAccount(true)}
+        >
           Quản lý tài khoản
         </label>
       ),
@@ -211,6 +211,11 @@ const LayoutAdmin = () => {
           </Content>
         </Layout>
       </Layout>
+
+      <ManageAccount
+        isModalOpen={openManageAccount}
+        setIsModalOpen={setOpenManageAccount}
+      />
     </>
   );
 };

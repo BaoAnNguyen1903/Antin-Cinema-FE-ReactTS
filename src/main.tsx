@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Layout from "@/layout.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import HomePage from "pages/client/home.tsx";
 import UuDai from "pages/client/uuDai/uuDai";
-import { App, ConfigProvider } from "antd";
+import { App, Button, ConfigProvider, Result } from "antd";
 import { AppProvider } from "components/context/app.context";
 import LoginPage from "pages/client/auth/login";
 import RegisterPage from "pages/client/auth/register";
@@ -100,6 +100,21 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <WeekDatePicker />
+  },
+  {
+    path: "*",
+    element: (
+      <Result
+        status="404"
+        title="404"
+        subTitle="Sorry, the page you visited does not exist."
+        extra={
+          <Button type="primary">
+            <Link to="/">Back Home</Link>
+          </Button>
+        }
+      />
+    )
   }
 ]);
 

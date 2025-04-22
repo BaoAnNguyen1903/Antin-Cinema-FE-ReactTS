@@ -1,6 +1,7 @@
 import { Button, Result } from "antd";
 import { useCurrentApp } from "components/context/app.context";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface IProps {
   children: React.ReactNode;
@@ -8,22 +9,32 @@ interface IProps {
 
 const ProtectedRoute = (props: IProps) => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   const { isAuthenticated, user } = useCurrentApp();
-  if (isAuthenticated === false) {
-    return (
-      <Result
-        status="404"
-        title="Not Login"
-        subTitle="Vui lòng đăng nhập để sử dụng tính năng này."
-        extra={
-          <Button type="primary">
-            <Link to="/">Back Home</Link>
-          </Button>
-        }
-      />
-    );
-  }
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Nếu chưa biết `isAuthenticated` là true hay false (ví dụ đang load app)
+  if (isAuthenticated === undefined) return null;
+
+  // if (isAuthenticated === false) {
+  //   return (
+  //     <Result
+  //       status="500"
+  //       title="Not Login"
+  //       subTitle="Vui lòng đăng nhập để sử dụng tính năng này."
+  //       extra={
+  //         <Button type="primary">
+  //           <Link to="/">Back Home</Link>
+  //         </Button>
+  //       }
+  //     />
+  //   );
+  // }
 
   const isAdminRoute = location.pathname.includes("admin");
   if (isAuthenticated === true && isAdminRoute === true) {
