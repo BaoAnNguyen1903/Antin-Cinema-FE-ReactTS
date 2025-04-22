@@ -38,7 +38,7 @@ const LayoutAdmin = () => {
       icon: <LineChartOutlined />
     },
     {
-      label: <Link to="/admin/guest">Manage Guest</Link>,
+      label: <Link to="/admin/guest">Manage Guests</Link>,
       key: "/admin/guest",
       icon: <TeamOutlined />
     },
