@@ -120,7 +120,7 @@ declare global {
 
   interface IGuest {
     kid: string;
-    name: string;
+    fullName: string;
     email: string;
     phone: string;
   }

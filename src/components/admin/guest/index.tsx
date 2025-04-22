@@ -1,10 +1,12 @@
-// import { getOrdersAPI } from "@/services/api";
+import { getGuestsAPI } from "@/services/api";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable } from "@ant-design/pro-components";
 import { useRef, useState } from "react";
 
 type TSearch = {
-  name: string;
+  fullName: string;
+  phone: string;
+  email: string;
 };
 
 const TableGuest = () => {
@@ -25,14 +27,14 @@ const TableGuest = () => {
     {
       title: "ID",
       dataIndex: "kid",
-      hideInSearch: true,
-      render(dom, entity, index, action, schema) {
-        return <a href="#">{entity.kid}</a>;
-      }
+      hideInSearch: true
+      //   render(dom, entity, index, action, schema) {
+      //     return <a href="#">{entity.kid}</a>;
+      //   }
     },
     {
-      title: "Name",
-      dataIndex: "name"
+      title: "Full Name",
+      dataIndex: "fullName"
     },
     {
       title: "Phone",
@@ -55,8 +57,16 @@ const TableGuest = () => {
           if (params) {
             query += `current=${params.current}&pageSize=${params.pageSize}`;
 
-            if (params.name) {
-              query += `&name=/${params.name}/i`;
+            if (params.fullName) {
+              query += `&fullName=/${params.fullName}/i`;
+            }
+
+            if (params.phone) {
+              query += `&phone=/${params.phone}/i`;
+            }
+
+            if (params.email) {
+              query += `&email=/${params.email}/i`;
             }
           }
 
@@ -79,7 +89,7 @@ const TableGuest = () => {
             total: res.data?.meta.total
           };
         }}
-        rowKey="_id"
+        rowKey="kid"
         pagination={{
           current: meta.current,
           pageSize: meta.pageSize,
