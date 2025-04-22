@@ -22,6 +22,10 @@ interface IDataImport {
   movieActor: string;
   movieType: IMovieType;
   movieTime: string;
+  movieLanguage: IMovieLanguage;
+  movieRated: IMovieRated;
+  openday: Date;
+  closedate: Date;
 }
 
 const ImportMovie = (props: IProps) => {
