@@ -129,13 +129,14 @@ const UpdateMovie = (props: IProps) => {
         okText={"Cập nhật"}
         cancelText={"Hủy"}
         confirmLoading={isSubmit}
+        width={700}
       >
         <Divider />
 
         <Form
           form={form}
           name="form-update"
-          style={{ maxWidth: 600 }}
+          style={{ maxWidth: 700 }}
           onFinish={onFinish}
           autoComplete="off"
         >
