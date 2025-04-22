@@ -18,6 +18,7 @@ import enUS from "antd/locale/en_US";
 import ManageShowtimePage from "./pages/admin/manage.showtime";
 
 import WeekDatePicker from "./pages/client/uuDai/Test";
+import ManageGuestPage from "./pages/admin/manage.guest";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ManageUserPage />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: "guest",
+        element: (
+          <ProtectedRoute>
+            <ManageGuestPage />
           </ProtectedRoute>
         )
       }

@@ -8,7 +8,8 @@ import {
   PlayCircleOutlined,
   CalendarOutlined,
   GoldOutlined,
-  BorderOutlined
+  BorderOutlined,
+  TeamOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Space, Avatar } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -35,6 +36,11 @@ const LayoutAdmin = () => {
       label: <Link to="/admin">Revenue</Link>,
       key: "/admin",
       icon: <LineChartOutlined />
+    },
+    {
+      label: <Link to="/admin/guest">Manage Guest</Link>,
+      key: "/admin/guest",
+      icon: <TeamOutlined />
     },
     {
       label: <Link to="/admin/user">Manage Users</Link>,
