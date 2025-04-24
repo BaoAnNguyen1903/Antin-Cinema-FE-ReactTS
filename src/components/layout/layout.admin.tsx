@@ -65,6 +65,11 @@ const LayoutAdmin = () => {
       icon: <DollarCircleOutlined />
     },
     {
+      label: <Link to="/admin/voucher">Manage Vouchers</Link>,
+      key: "/admin/voucher",
+      icon: <DollarCircleOutlined />
+    },
+    {
       label: <span>Manage Rooms</span>,
       key: "/admin/room",
       icon: <GoldOutlined />,
