@@ -60,9 +60,21 @@ const LayoutAdmin = () => {
       icon: <CalendarOutlined />
     },
     {
-      label: <Link to="/admin/booking">Manage Bookings</Link>,
+      label: <span>Manage Bookings</span>,
       key: "/admin/booking",
-      icon: <DollarCircleOutlined />
+      icon: <DollarCircleOutlined />,
+      children: [
+        {
+          label: <Link to="/admin/booking/user">User Booking</Link>,
+          key: "/admin/booking/user",
+          icon: <DollarCircleOutlined />
+        },
+        {
+          label: <Link to="/admin/booking/guest">Guest Booking</Link>,
+          key: "/admin/booking/guest",
+          icon: <DollarCircleOutlined />
+        }
+      ]
     },
     {
       label: <Link to="/admin/voucher">Manage Vouchers</Link>,

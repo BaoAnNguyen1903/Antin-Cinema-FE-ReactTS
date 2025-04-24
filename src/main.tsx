@@ -86,6 +86,14 @@ const router = createBrowserRouter([
             <ManageGuestPage />
           </ProtectedRoute>
         )
+      },
+      {
+        path: "voucher",
+        element: (
+          <ProtectedRoute>
+            <ManageGuestPage />
+          </ProtectedRoute>
+        )
       }
     ]
   },
