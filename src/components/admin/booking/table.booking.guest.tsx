@@ -8,7 +8,7 @@ type TSearch = {
   name: string;
 };
 
-const TableBooking = () => {
+const TableBookingGuest = () => {
   const actionRef = useRef<ActionType>();
   const [meta, setMeta] = useState({
     current: 1,
@@ -114,4 +114,4 @@ const TableBooking = () => {
   );
 };
 
-export default TableBooking;
+export default TableBookingGuest;

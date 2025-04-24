@@ -13,12 +13,13 @@ import ProtectedRoute from "components/auth";
 import DashBoardPage from "pages/admin/dashboard";
 import ManageUserPage from "pages/admin/manage.user";
 import ManageMoviePage from "pages/admin/manage.movie";
-import ManageBookingPage from "pages/admin/manage.booking";
+import ManageBookingUserPage from "@/pages/admin/manage.booking.user";
 import enUS from "antd/locale/en_US";
 import ManageShowtimePage from "./pages/admin/manage.showtime";
 
 import WeekDatePicker from "./pages/client/uuDai/Test";
 import ManageGuestPage from "./pages/admin/manage.guest";
+import ManageBookingGuestPage from "./pages/admin/mange.booking.guest";
 
 const router = createBrowserRouter([
   {
@@ -64,10 +65,18 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "booking",
+        path: "booking/user",
         element: (
           <ProtectedRoute>
-            <ManageBookingPage />
+            <ManageBookingUserPage />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: "booking/guest",
+        element: (
+          <ProtectedRoute>
+            <ManageBookingGuestPage />
           </ProtectedRoute>
         )
       },
