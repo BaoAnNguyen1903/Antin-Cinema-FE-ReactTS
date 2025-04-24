@@ -25,7 +25,7 @@ const ProtectedRoute = (props: IProps) => {
   //   return (
   //     <Result
   //       status="500"
-  //       title="Not Login"
+  //       title="Not Login"  
   //       subTitle="Vui lòng đăng nhập để sử dụng tính năng này."
   //       extra={
   //         <Button type="primary">

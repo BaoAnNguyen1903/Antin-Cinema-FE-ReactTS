@@ -65,7 +65,7 @@ const LoginPage = () => {
                 label="Tài khoản"
                 name="username"
                 rules={[
-                  { required: true, message: "Email không được để trống!" }
+                  { required: true, message: "Tài khoản không được để trống!" }
                 ]}
               >
                 <Input />
