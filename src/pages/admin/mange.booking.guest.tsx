@@ -1,4 +1,4 @@
-import TableBookingGuest from "@/components/admin/booking/table.booking.user";
+import TableBookingGuest from "@/components/admin/booking/table.booking.guest";
 
 const ManageBookingGuestPage = () => {
   return (

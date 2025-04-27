@@ -108,7 +108,7 @@ const TableBookingGuest = () => {
             );
           }
         }}
-        headerTitle="Table Bookings"
+        headerTitle="Table Guest Booking"
       />
     </>
   );
