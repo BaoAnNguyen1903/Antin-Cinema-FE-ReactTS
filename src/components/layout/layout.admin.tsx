@@ -185,7 +185,9 @@ const LayoutAdmin = () => {
           onCollapse={(value) => setCollapsed(value)}
         >
           <div style={{ height: 32, margin: 16, textAlign: "center" }}>
-            Antin Cinema
+            <Link to={"/"} style={{ color: "black" }}>
+              Antin Cinema
+            </Link>
           </div>
           <Menu
             // defaultSelectedKeys={[activeMenu]}
