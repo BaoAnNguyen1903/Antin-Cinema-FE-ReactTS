@@ -119,6 +119,10 @@ const router = createBrowserRouter([
     element: <WeekDatePicker />
   },
   {
+    path: "/test2",
+    element: <WeekDatePicker />
+  },
+  {
     path: "*",
     element: (
       <Result
