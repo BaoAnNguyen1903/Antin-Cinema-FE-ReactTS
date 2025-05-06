@@ -16,7 +16,6 @@ import ManageMoviePage from "pages/admin/manage.movie";
 import ManageBookingUserPage from "@/pages/admin/manage.booking.user";
 import enUS from "antd/locale/en_US";
 import ManageShowtimePage from "./pages/admin/manage.showtime";
-
 import WeekDatePicker from "./pages/client/uuDai/Test";
 import ManageGuestPage from "./pages/admin/manage.guest";
 import ManageBookingGuestPage from "./pages/admin/mange.booking.guest";
@@ -32,6 +31,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/uu-dai",
+        element: <UuDai />
+      },
+      {
+        path: "/tin-tuc-phim",
         element: <UuDai />
       }
     ]
