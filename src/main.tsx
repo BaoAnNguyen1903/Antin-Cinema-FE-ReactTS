@@ -36,7 +36,11 @@ const router = createBrowserRouter([
       {
         path: "/tin-tuc-phim",
         element: <UuDai />
-      }
+      },
+      {
+        path: "/thanh-vien",
+        element: <UuDai />
+      },
     ]
   },
   {
