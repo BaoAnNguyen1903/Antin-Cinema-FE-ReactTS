@@ -30,6 +30,10 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
+        path: "/phim-dang-chieu",
+        element: <UuDai />
+      },
+      {
         path: "/uu-dai",
         element: <UuDai />
       },
