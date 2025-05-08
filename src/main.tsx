@@ -34,6 +34,10 @@ const router = createBrowserRouter([
         element: <UuDai />
       },
       {
+        path: "/phim-sap-chieu",
+        element: <UuDai />
+      },
+      {
         path: "/uu-dai",
         element: <UuDai />
       },
