@@ -46,7 +46,11 @@ const router = createBrowserRouter([
         element: <UuDai />
       },
       {
-        path: "/thanh-vien",
+        path: "/tai-khoan-antin",
+        element: <UuDai />
+      },
+      {
+        path: "/quyen-loi",
         element: <UuDai />
       },
     ]
