@@ -53,6 +53,10 @@ const router = createBrowserRouter([
         path: "/quyen-loi",
         element: <UuDai />
       },
+      {
+        path: "/test-abc",
+        element: <UuDai />
+      },
     ]
   },
   {
